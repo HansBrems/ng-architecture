@@ -1,0 +1,6 @@
+<app-products-table
+  [products]="products$ | async"
+  (linkClicked)="navigateToEditPage($event)"
+/>
+
+<button [routerLink]="['../']">Back</button>
