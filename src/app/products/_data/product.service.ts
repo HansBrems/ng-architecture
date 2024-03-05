@@ -1,30 +1,24 @@
-import { Injectable } from '@angular/core';
-import { DummyProducts, Product } from './product';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable, inject } from '@angular/core';
+import { Product } from './product';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  private productsSubject = new BehaviorSubject<Product[]>(DummyProducts);
-  products$ = this.productsSubject.asObservable();
+  readonly http = inject(HttpClient);
 
-  private currentProductSubject = new BehaviorSubject<Product | null>(null);
-  currentProduct$ = this.currentProductSubject.asObservable();
-
-  async loadProduct(id: number): Promise<void> {
-    this.currentProductSubject.next(null);
-    await this.stall();
-    const product = DummyProducts.find((p) => p.id === id) || null;
-    this.currentProductSubject.next(product);
+  fetchProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>('api/products');
   }
 
-  async saveProduct(product: Product): Promise<void> {
-    await this.stall();
-    this.productsSubject.next([
-      ...this.productsSubject.value.filter((p) => p.id !== product.id),
-      product,
-    ]);
+  fetchProduct(id: number): Observable<Product> {
+    return this.http.get<Product>(`api/products/${id}`);
+  }
+
+  saveProduct(product: Product): Observable<Object> {
+    return this.http.put(`api/products/${product.id}`, product);
   }
 
   async stall(): Promise<void> {
