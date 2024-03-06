@@ -12,4 +12,5 @@ import { NgIf } from '@angular/common';
 export class ProductFormComponent {
   @Input() product: Product | null = null;
   @Output() submitted = new EventEmitter<Product>();
+  @Output() cancelled = new EventEmitter<void>();
 }

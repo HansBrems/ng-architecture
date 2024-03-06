@@ -1,1 +1,5 @@
-<app-product-form [product]="productVm$ | async" (submitted)="save($event)" />
+<app-product-form
+  [product]="productVm$ | async"
+  (submitted)="save($event)"
+  (cancelled)="cancel()"
+/>

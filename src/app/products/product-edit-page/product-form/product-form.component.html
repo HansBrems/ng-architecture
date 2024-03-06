@@ -1,4 +1,5 @@
 <form *ngIf="product" (ngSubmit)="submitted.emit(product)">
   <input type="text" [(ngModel)]="product.name" name="name" />
+  <button type="button" (click)="cancelled.emit()">Cancel</button>
   <button type="submit">Save</button>
 </form>

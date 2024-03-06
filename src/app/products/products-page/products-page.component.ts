@@ -2,7 +2,9 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ProductTableComponent } from './products-table/products-table.component';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
-import { StateService } from '../../state/state.service';
+import { Store } from '@ngrx/store';
+import { selectProducts } from '../_state/product.selectors';
+import { productsPageActions } from '../_state/product.actions';
 
 @Component({
   standalone: true,
@@ -12,12 +14,12 @@ import { StateService } from '../../state/state.service';
 export class ProductsPageComponent implements OnInit {
   readonly route = inject(ActivatedRoute);
   readonly router = inject(Router);
-  readonly store = inject(StateService);
+  readonly store = inject(Store);
 
-  products$ = this.store.products.products$;
+  products$ = this.store.select(selectProducts);
 
   ngOnInit() {
-    this.store.products.loadProducts();
+    this.store.dispatch(productsPageActions.loadProducts());
   }
 
   navigateToEditPage(id: number) {

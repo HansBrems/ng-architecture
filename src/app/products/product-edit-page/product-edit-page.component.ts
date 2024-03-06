@@ -6,7 +6,9 @@ import { map } from 'rxjs';
 import { deepClone } from '../../shared/utils/deep-clone';
 import { Product } from '../_data/product';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StateService } from '../../state/state.service';
+import { Store } from '@ngrx/store';
+import { selectCurrentProduct } from '../_state/product.selectors';
+import { productEditPageActions } from '../_state/product.actions';
 
 @Component({
   standalone: true,
@@ -16,19 +18,21 @@ import { StateService } from '../../state/state.service';
 export class ProductEditPageComponent implements OnInit {
   readonly route = inject(ActivatedRoute);
   readonly router = inject(Router);
-  readonly store = inject(StateService);
+  readonly store = inject(Store);
 
-  productVm$ = this.store.products.currentProduct$.pipe(
-    map((product) => deepClone(product))
-  );
+  productVm$ = this.store.select(selectCurrentProduct).pipe(map((product) => deepClone(product)));
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.store.products.loadProduct(+id!);
+    this.store.dispatch(productEditPageActions.loadProduct({ id: +id! }));
   }
 
-  async save(product: Product) {
-    await this.store.products.saveProduct(product);
+  cancel() {
+    this.router.navigate(['/products']);
+  }
+
+  save(product: Product) {
+    this.store.dispatch(productEditPageActions.saveProduct({ product }));
     this.router.navigate(['/products']);
   }
 }
