@@ -1,5 +1,41 @@
-<form *ngIf="product" (ngSubmit)="submitted.emit(product)">
-  <input type="text" [(ngModel)]="product.name" name="name" />
-  <button type="button" (click)="cancelled.emit()">Cancel</button>
-  <button type="submit">Save</button>
+<form #productForm="ngForm" *ngIf="product" (ngSubmit)="submitted.emit(product)">
+  <app-stack>
+    <app-stack>
+      <label>Name</label>
+      <input
+        pInputText
+        #name="ngModel"
+        [(ngModel)]="product.name"
+        name="name"
+        type="text"
+        required
+      />
+      <em *ngIf="name.invalid">Name is required</em>
+    </app-stack>
+
+    <app-stack>
+      <label>Price</label>
+      <div class="p-inputgroup">
+        <input
+          pInputText
+          #price="ngModel"
+          [(ngModel)]="product.price"
+          name="price"
+          type="number"
+          min="0"
+          max="2000"
+          required
+        />
+        <span class="p-inputgroup-addon">EUR</span>
+      </div>
+      <em *ngIf="price.invalid">Price is required</em>
+    </app-stack>
+
+    <div class="flex gap-2 justify-content-end">
+      <p-button (click)="cancelled.emit()" label="Cancel" />
+      <p-button type="submit" label="Save" />
+    </div>
+
+    <em *ngIf="productForm.invalid">Form is invalid</em>
+  </app-stack>
 </form>

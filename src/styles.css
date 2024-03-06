@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/primeng.css";
+@import "primeng/resources/themes/saga-blue/theme.css";
+@import "primeflex/primeflex.css";
+@import "primeicons/primeicons.css";
+
+.p-inputtext.ng-touched.ng-valid {
+  border-color: #36f445;
+}
