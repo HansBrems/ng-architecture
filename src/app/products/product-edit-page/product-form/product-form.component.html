@@ -1,39 +1,41 @@
 <form #productForm="ngForm" *ngIf="product" (ngSubmit)="submitted.emit(product)">
   <app-stack>
-    <app-stack>
-      <label>Name</label>
+    <app-form-field>
+      <label for="name">Name</label>
       <input
-        pInputText
         #name="ngModel"
-        [(ngModel)]="product.name"
+        pInputText
+        id="name"
         name="name"
         type="text"
+        [(ngModel)]="product.name"
         required
       />
       <em *ngIf="name.invalid">Name is required</em>
-    </app-stack>
+    </app-form-field>
 
-    <app-stack>
-      <label>Price</label>
-      <div class="p-inputgroup">
+    <app-form-field>
+      <label for="price">Price</label>
+      <app-input-group>
         <input
-          pInputText
           #price="ngModel"
-          [(ngModel)]="product.price"
+          pInputText
+          id="price"
           name="price"
           type="number"
-          min="0"
+          [(ngModel)]="product.price"
           max="2000"
+          min="0"
           required
         />
         <span class="p-inputgroup-addon">EUR</span>
-      </div>
+      </app-input-group>
       <em *ngIf="price.invalid">Price is required</em>
-    </app-stack>
+    </app-form-field>
 
     <div class="flex gap-2 justify-content-end">
       <p-button (click)="cancelled.emit()" label="Cancel" />
-      <p-button type="submit" label="Save" />
+      <p-button [disabled]="productForm.invalid || false" type="submit" label="Save" />
     </div>
 
     <em *ngIf="productForm.invalid">Form is invalid</em>
