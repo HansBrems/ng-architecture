@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgFor } from '@angular/common';
-import { Product } from '../../_data/product';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
+
+import { Product } from '../../_data/product';
 
 @Component({
   selector: 'app-products-table',

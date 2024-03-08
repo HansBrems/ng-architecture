@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
-import { productApiActions, productEditPageActions, productsPageActions } from './product.actions';
+
 import { Product } from '../_data/product';
+import { productApiActions, productEditPageActions, productsPageActions } from './product.actions';
 
 export interface ProductsState {
   products: Product[];
@@ -29,5 +30,5 @@ export const productsReducer = createReducer(
   on(productApiActions.loadProductSuccess, (state, { product }) => ({
     ...state,
     currentProduct: product,
-  }))
+  })),
 );

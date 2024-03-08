@@ -1,14 +1,15 @@
+import { AsyncPipe, NgIf } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AsyncPipe, NgIf } from '@angular/common';
-import { ProductFormComponent } from './product-form/product-form.component';
-import { map } from 'rxjs';
-import { deepClone } from '../../shared/utils/deep-clone';
-import { Product } from '../_data/product';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { selectCurrentProduct } from '../_state/product.selectors';
+import { map } from 'rxjs';
+
+import { deepClone } from '../../shared/utils/deep-clone';
+import { Product } from '../_data/product';
 import { productEditPageActions } from '../_state/product.actions';
+import { selectCurrentProduct } from '../_state/product.selectors';
+import { ProductFormComponent } from './product-form/product-form.component';
 
 @Component({
   standalone: true,

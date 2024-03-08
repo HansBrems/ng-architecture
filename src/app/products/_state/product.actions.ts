@@ -1,4 +1,5 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
+
 import { Product } from '../_data/product';
 
 export const productsPageActions = createActionGroup({

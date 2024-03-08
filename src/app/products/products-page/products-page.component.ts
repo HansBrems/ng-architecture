@@ -1,10 +1,11 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { ProductTableComponent } from './products-table/products-table.component';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
+import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { selectProducts } from '../_state/product.selectors';
+
 import { productsPageActions } from '../_state/product.actions';
+import { selectProducts } from '../_state/product.selectors';
+import { ProductTableComponent } from './products-table/products-table.component';
 
 @Component({
   standalone: true,

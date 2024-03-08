@@ -1,8 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, exhaustMap, map, of } from 'rxjs';
-import { productsPageActions, productApiActions, productEditPageActions } from './product.actions';
+
 import { ProductService } from '../_data/product.service';
+import { productApiActions, productEditPageActions, productsPageActions } from './product.actions';
 
 @Injectable()
 export class ProductsEffects {
@@ -15,10 +16,10 @@ export class ProductsEffects {
       exhaustMap((action) =>
         this.productService.fetchProduct(action.id).pipe(
           map((product) => productApiActions.loadProductSuccess({ product })),
-          catchError(() => of(productApiActions.loadProductError()))
-        )
-      )
-    )
+          catchError(() => of(productApiActions.loadProductError())),
+        ),
+      ),
+    ),
   );
 
   loadProducts$ = createEffect(() =>
@@ -27,10 +28,10 @@ export class ProductsEffects {
       exhaustMap(() =>
         this.productService.fetchProducts().pipe(
           map((products) => productApiActions.loadProductsSuccess({ products })),
-          catchError(() => of(productApiActions.loadProductsError()))
-        )
-      )
-    )
+          catchError(() => of(productApiActions.loadProductsError())),
+        ),
+      ),
+    ),
   );
 
   saveProduct$ = createEffect(() =>
@@ -39,9 +40,9 @@ export class ProductsEffects {
       exhaustMap((action) =>
         this.productService.saveProduct(action.product).pipe(
           map(() => productApiActions.saveProductSuccess()),
-          catchError(() => of(productApiActions.saveProductError()))
-        )
-      )
-    )
+          catchError(() => of(productApiActions.saveProductError())),
+        ),
+      ),
+    ),
   );
 }

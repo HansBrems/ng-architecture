@@ -1,11 +1,12 @@
 import { Routes } from '@angular/router';
-import { ProductsPageComponent } from './products/products-page/products-page.component';
-import { ProductEditPageComponent } from './products/product-edit-page/product-edit-page.component';
-import { PageNotFoundComponent } from './not-found/page-not-found.component';
-import { provideState } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
+import { provideState } from '@ngrx/store';
+
+import { PageNotFoundComponent } from './not-found/page-not-found.component';
 import { ProductsEffects } from './products/_state/product.effects';
 import { productsReducer } from './products/_state/product.reducer';
+import { ProductEditPageComponent } from './products/product-edit-page/product-edit-page.component';
+import { ProductsPageComponent } from './products/products-page/products-page.component';
 
 export const routes: Routes = [
   {

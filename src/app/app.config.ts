@@ -1,17 +1,13 @@
-import {
-  ApplicationConfig,
-  importProvidersFrom,
-  isDevMode,
-} from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
+import { ApplicationConfig, importProvidersFrom, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { provideRouterStore } from '@ngrx/router-store';
+import { provideStore } from '@ngrx/store';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { routes } from './app.routes';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { provideHttpClient } from '@angular/common/http';
 import { AppData } from './data/app-data';
-import { provideStore } from '@ngrx/store';
-import { provideRouterStore } from '@ngrx/router-store';
-import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -27,8 +23,6 @@ export const appConfig: ApplicationConfig = {
     }),
     provideRouter(routes),
     provideHttpClient(),
-    importProvidersFrom(
-      HttpClientInMemoryWebApiModule.forRoot(AppData, { delay: 50 })
-    ),
+    importProvidersFrom(HttpClientInMemoryWebApiModule.forRoot(AppData, { delay: 50 })),
   ],
 };
