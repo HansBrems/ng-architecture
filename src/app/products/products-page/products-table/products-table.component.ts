@@ -1,13 +1,14 @@
-import { NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TableModule } from 'primeng/table';
 
 import { Product } from '../../_data/product';
 
 @Component({
   selector: 'app-products-table',
   standalone: true,
-  imports: [NgFor, RouterLink],
+  imports: [CommonModule, RouterLink, TableModule],
   templateUrl: './products-table.component.html',
 })
 export class ProductTableComponent {

@@ -1,18 +1,19 @@
-<table>
-  <thead>
+<p-table *ngIf="products" [value]="products">
+  <ng-template pTemplate="header">
     <tr>
       <th>Id</th>
       <th>Name</th>
       <th>Price</th>
     </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let product of products">
+  </ng-template>
+
+  <ng-template pTemplate="body" let-product>
+    <tr>
       <td>{{ product.id }}</td>
       <td>
         <a (click)="linkClicked.emit(product.id)">{{ product.name }}</a>
       </td>
       <td>{{ product.price }}</td>
     </tr>
-  </tbody>
-</table>
+  </ng-template>
+</p-table>
