@@ -1,5 +1,5 @@
 <app-product-form
   [product]="productVm$ | async"
   (submitted)="save($event)"
-  (cancelled)="cancel()"
+  (cancelled)="router.navigate(['/products'])"
 />

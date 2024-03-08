@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, concatMap, exhaustMap, map, of } from 'rxjs';
+import { catchError, exhaustMap, map, of } from 'rxjs';
 import { productsPageActions, productApiActions, productEditPageActions } from './product.actions';
 import { ProductService } from '../_data/product.service';
 
@@ -12,7 +12,7 @@ export class ProductsEffects {
   loadProduct$ = createEffect(() =>
     this.actions.pipe(
       ofType(productEditPageActions.loadProduct),
-      concatMap((action) =>
+      exhaustMap((action) =>
         this.productService.fetchProduct(action.id).pipe(
           map((product) => productApiActions.loadProductSuccess({ product })),
           catchError((error) => of(productApiActions.loadProductError()))

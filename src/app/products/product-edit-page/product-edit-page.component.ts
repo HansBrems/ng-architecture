@@ -27,10 +27,6 @@ export class ProductEditPageComponent implements OnInit {
     this.store.dispatch(productEditPageActions.loadProduct({ id: +id! }));
   }
 
-  cancel() {
-    this.router.navigate(['/products']);
-  }
-
   save(product: Product) {
     this.store.dispatch(productEditPageActions.saveProduct({ product }));
     this.router.navigate(['/products']);

@@ -1,5 +1,5 @@
 {
-  "name": "my-test-app",
+  "name": "ng-architecture",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

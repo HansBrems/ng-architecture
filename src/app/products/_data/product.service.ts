@@ -20,8 +20,4 @@ export class ProductService {
   saveProduct(product: Product): Observable<Object> {
     return this.http.put(`api/products/${product.id}`, product);
   }
-
-  async stall(): Promise<void> {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-  }
 }
