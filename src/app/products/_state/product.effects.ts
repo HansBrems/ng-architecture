@@ -15,7 +15,7 @@ export class ProductsEffects {
       exhaustMap((action) =>
         this.productService.fetchProduct(action.id).pipe(
           map((product) => productApiActions.loadProductSuccess({ product })),
-          catchError((error) => of(productApiActions.loadProductError()))
+          catchError(() => of(productApiActions.loadProductError()))
         )
       )
     )
@@ -27,7 +27,7 @@ export class ProductsEffects {
       exhaustMap(() =>
         this.productService.fetchProducts().pipe(
           map((products) => productApiActions.loadProductsSuccess({ products })),
-          catchError((error) => of(productApiActions.loadProductsError()))
+          catchError(() => of(productApiActions.loadProductsError()))
         )
       )
     )
@@ -39,7 +39,7 @@ export class ProductsEffects {
       exhaustMap((action) =>
         this.productService.saveProduct(action.product).pipe(
           map(() => productApiActions.saveProductSuccess()),
-          catchError((error) => of(productApiActions.saveProductError()))
+          catchError(() => of(productApiActions.saveProductError()))
         )
       )
     )

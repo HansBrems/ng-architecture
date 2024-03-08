@@ -13,7 +13,7 @@ export class ProductTableComponent {
   @Input() products: Product[] | null = [];
   @Output() linkClicked = new EventEmitter<number>();
 
-  onLinkClicked($event: any, productId: number) {
+  onLinkClicked($event: MouseEvent, productId: number) {
     this.linkClicked.emit(productId);
     // Prevent default event behavior
     $event.preventDefault();
