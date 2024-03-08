@@ -1,4 +1,4 @@
-<p-table *ngIf="products" [value]="products">
+<p-table *ngIf="products" [value]="products" [rowHover]="true">
   <ng-template pTemplate="header">
     <tr>
       <th>Id</th>
@@ -8,10 +8,10 @@
   </ng-template>
 
   <ng-template pTemplate="body" let-product>
-    <tr>
+    <tr class="cursor-pointer" (click)="linkClicked.emit(product.id)">
       <td>{{ product.id }}</td>
       <td>
-        <a (click)="linkClicked.emit(product.id)">{{ product.name }}</a>
+        <a>{{ product.name }}</a>
       </td>
       <td>{{ product.price }}</td>
     </tr>
