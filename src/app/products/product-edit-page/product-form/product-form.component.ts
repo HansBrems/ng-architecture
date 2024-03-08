@@ -1,6 +1,7 @@
 import { NgIf } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { TranslocoPipe } from '@ngneat/transloco';
 import { ButtonModule } from 'primeng/button';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
@@ -19,6 +20,7 @@ import { Product } from '../../_data/product';
     ButtonModule,
     InputNumberModule,
     InputTextModule,
+    TranslocoPipe,
     StackComponent,
     FormFieldComponent,
     InputGroupComponent,

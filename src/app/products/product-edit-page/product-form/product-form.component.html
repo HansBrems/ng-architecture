@@ -34,8 +34,12 @@
     </app-form-field>
 
     <div class="flex gap-2 justify-content-end">
-      <p-button (click)="cancelled.emit()" label="Cancel" />
-      <p-button [disabled]="productForm.invalid || false" type="submit" label="Save" />
+      <p-button (click)="cancelled.emit()" [label]="'cancel' | transloco" />
+      <p-button
+        [disabled]="productForm.invalid || false"
+        type="submit"
+        [label]="'save' | transloco"
+      />
     </div>
 
     <em *ngIf="productForm.invalid">Form is invalid</em>
