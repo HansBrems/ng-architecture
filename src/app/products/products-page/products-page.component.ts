@@ -1,7 +1,9 @@
 import { AsyncPipe } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { TranslocoPipe } from '@ngneat/transloco';
 import { Store } from '@ngrx/store';
+import { ButtonModule } from 'primeng/button';
 
 import { productsPageActions } from '../_state/product.actions';
 import { selectProducts } from '../_state/product.selectors';
@@ -9,7 +11,7 @@ import { ProductTableComponent } from './products-table/products-table.component
 
 @Component({
   standalone: true,
-  imports: [AsyncPipe, RouterLink, ProductTableComponent],
+  imports: [AsyncPipe, RouterLink, ButtonModule, TranslocoPipe, ProductTableComponent],
   templateUrl: './products-page.component.html',
 })
 export class ProductsPageComponent implements OnInit {

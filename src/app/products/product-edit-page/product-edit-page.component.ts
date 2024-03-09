@@ -9,7 +9,7 @@ import { deepClone } from '../../shared/utils/deep-clone';
 import { Product } from '../_data/product';
 import { productEditPageActions } from '../_state/product.actions';
 import { selectCurrentProduct } from '../_state/product.selectors';
-import { ProductFormComponent } from './product-form/product-form.component';
+import { ProductFormComponent } from '../product-form/product-form.component';
 
 @Component({
   standalone: true,
@@ -25,6 +25,8 @@ export class ProductEditPageComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
+    if (!id) return;
+
     this.store.dispatch(productEditPageActions.loadProduct({ id: +id! }));
   }
 

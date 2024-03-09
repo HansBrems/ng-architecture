@@ -8,3 +8,4 @@ export const selectCurrentProduct = createSelector(
   selectProductsState,
   (state) => state.currentProduct,
 );
+export const selectNewId = createSelector(selectProductsState, (state) => state.newId);

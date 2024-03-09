@@ -13,6 +13,7 @@ export const productEditPageActions = createActionGroup({
   source: 'Product Edit Page',
   events: {
     'Load Product': props<{ id: number }>(),
+    'Add Product': props<{ product: Product }>(),
     'Save Product': props<{ product: Product }>(),
   },
 });
@@ -24,6 +25,8 @@ export const productApiActions = createActionGroup({
     'Load Product Error': emptyProps(),
     'Load Products Success': props<{ products: Product[] }>(),
     'Load Products Error': emptyProps(),
+    'Add Product Success': emptyProps(),
+    'Add Product Error': emptyProps(),
     'Save Product Success': emptyProps(),
     'Save Product Error': emptyProps(),
   },

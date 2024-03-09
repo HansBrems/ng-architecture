@@ -1,0 +1,5 @@
+<app-product-form
+  [product]="product"
+  (submitted)="save($event)"
+  (cancelled)="router.navigate(['/products'])"
+/>

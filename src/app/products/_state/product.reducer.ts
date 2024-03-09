@@ -6,11 +6,13 @@ import { productApiActions, productEditPageActions, productsPageActions } from '
 export interface ProductsState {
   products: Product[];
   currentProduct: Product | null;
+  newId: number;
 }
 
 export const initialState: ProductsState = {
   products: [],
   currentProduct: null,
+  newId: 0,
 };
 
 export const productsReducer = createReducer(
@@ -22,6 +24,7 @@ export const productsReducer = createReducer(
   on(productApiActions.loadProductsSuccess, (state, { products }) => ({
     ...state,
     products: products,
+    newId: products.length + 1,
   })),
   on(productEditPageActions.loadProduct, (state) => ({
     ...state,
