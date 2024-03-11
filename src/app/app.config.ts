@@ -16,12 +16,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimationsAsync(),
     provideRouter(routes),
-    importProvidersFrom(
-      NgxsModule.forRoot([ProductState], {
-        developmentMode: isDevMode(),
-      }),
-      NgxsReduxDevtoolsPluginModule.forRoot(),
-    ),
     provideTransloco({
       config: {
         availableLangs: ['en'],
@@ -35,6 +29,10 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     importProvidersFrom(
       HttpClientInMemoryWebApiModule.forRoot(AppData, { delay: 50, passThruUnknownUrl: true }),
+      NgxsModule.forRoot([ProductState], {
+        developmentMode: isDevMode(),
+      }),
+      NgxsReduxDevtoolsPluginModule.forRoot(),
     ),
   ],
 };
