@@ -1,33 +1,20 @@
-import { createActionGroup, emptyProps, props } from '@ngrx/store';
-
 import { Product } from '../_data/product';
 
-export const productsPageActions = createActionGroup({
-  source: 'Products Page',
-  events: {
-    'Load Products': emptyProps(),
-  },
-});
+export class LoadProducts {
+  static readonly type = '[Products] Load Products';
+}
 
-export const productEditPageActions = createActionGroup({
-  source: 'Product Edit Page',
-  events: {
-    'Load Product': props<{ id: number }>(),
-    'Add Product': props<{ product: Product }>(),
-    'Save Product': props<{ product: Product }>(),
-  },
-});
+export class LoadProduct {
+  static readonly type = '[Products] Load Product';
+  constructor(public id: number) {}
+}
 
-export const productApiActions = createActionGroup({
-  source: 'Products API',
-  events: {
-    'Load Product Success': props<{ product: Product }>(),
-    'Load Product Error': emptyProps(),
-    'Load Products Success': props<{ products: Product[] }>(),
-    'Load Products Error': emptyProps(),
-    'Add Product Success': emptyProps(),
-    'Add Product Error': emptyProps(),
-    'Save Product Success': emptyProps(),
-    'Save Product Error': emptyProps(),
-  },
-});
+export class InsertProduct {
+  static readonly type = '[Products] Insert Product';
+  constructor(public product: Product) {}
+}
+
+export class UpdateProduct {
+  static readonly type = '[Products] Update Product';
+  constructor(public product: Product) {}
+}

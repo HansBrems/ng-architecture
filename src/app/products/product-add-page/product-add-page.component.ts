@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslocoPipe } from '@ngneat/transloco';
-import { Store } from '@ngrx/store';
+import { Store } from '@ngxs/store';
 
 import { Product } from '../_data/product';
-import { productEditPageActions } from '../_state/product.actions';
+import { InsertProduct } from '../_state/product.actions';
 import { ProductFormComponent } from '../product-form/product-form.component';
 
 @Component({
@@ -22,7 +22,8 @@ export class ProductAddPageComponent {
   };
 
   save(product: Product): void {
-    this.store.dispatch(productEditPageActions.addProduct({ product }));
-    this.router.navigate(['/products']);
+    this.store
+      .dispatch(new InsertProduct(product))
+      .subscribe(() => this.router.navigate(['products']));
   }
 }

@@ -2,13 +2,13 @@ import { AsyncPipe, NgIf } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
+import { Store } from '@ngxs/store';
 import { map } from 'rxjs';
 
 import { deepClone } from '../../shared/utils/deep-clone';
 import { Product } from '../_data/product';
-import { productEditPageActions } from '../_state/product.actions';
-import { selectCurrentProduct } from '../_state/product.selectors';
+import { LoadProduct, UpdateProduct } from '../_state/product.actions';
+import { ProductState } from '../_state/product.state';
 import { ProductFormComponent } from '../product-form/product-form.component';
 
 @Component({
@@ -21,17 +21,16 @@ export class ProductEditPageComponent implements OnInit {
   readonly router = inject(Router);
   readonly store = inject(Store);
 
-  productVm$ = this.store.select(selectCurrentProduct).pipe(map((product) => deepClone(product)));
+  productVm$ = this.store.select(ProductState.product).pipe(map((product) => deepClone(product)));
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    if (!id) return;
-
-    this.store.dispatch(productEditPageActions.loadProduct({ id: +id! }));
+    this.store.dispatch(new LoadProduct(+id!));
   }
 
   save(product: Product) {
-    this.store.dispatch(productEditPageActions.saveProduct({ product }));
-    this.router.navigate(['/products']);
+    this.store
+      .dispatch(new UpdateProduct(product))
+      .subscribe(() => this.router.navigate(['/products']));
   }
 }
