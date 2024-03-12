@@ -21,7 +21,9 @@ export class ProductEditPageComponent implements OnInit {
   readonly router = inject(Router);
   readonly store = inject(Store);
 
-  productVm$ = this.store.select(ProductState.product).pipe(map((product) => deepClone(product)));
+  productVm$ = this.store
+    .select(ProductState.product$)
+    .pipe(map((product) => deepClone(product)));
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');

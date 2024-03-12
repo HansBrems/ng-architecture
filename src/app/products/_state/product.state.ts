@@ -4,7 +4,12 @@ import { tap } from 'rxjs';
 
 import { Product } from '../_data/product';
 import { ProductService } from '../_data/product.service';
-import { InsertProduct, LoadProduct, LoadProducts, UpdateProduct } from './product.actions';
+import {
+  InsertProduct,
+  LoadProduct,
+  LoadProducts,
+  UpdateProduct,
+} from './product.actions';
 
 interface ProductStateModel {
   products: Product[];
@@ -25,12 +30,12 @@ export class ProductState {
   private readonly productService = inject(ProductService);
 
   @Selector()
-  static products(state: ProductStateModel) {
+  static products$(state: ProductStateModel) {
     return state.products;
   }
 
   @Selector()
-  static product(state: ProductStateModel) {
+  static product$(state: ProductStateModel) {
     return state.product;
   }
 

@@ -11,7 +11,13 @@ import { ProductTableComponent } from './products-table/products-table.component
 
 @Component({
   standalone: true,
-  imports: [AsyncPipe, RouterLink, ButtonModule, TranslocoPipe, ProductTableComponent],
+  imports: [
+    AsyncPipe,
+    RouterLink,
+    ButtonModule,
+    TranslocoPipe,
+    ProductTableComponent,
+  ],
   templateUrl: './products-page.component.html',
 })
 export class ProductsPageComponent implements OnInit {
@@ -19,7 +25,7 @@ export class ProductsPageComponent implements OnInit {
   readonly router = inject(Router);
   readonly store = inject(Store);
 
-  products$ = this.store.select(ProductState.products);
+  products$ = this.store.select(ProductState.products$);
 
   ngOnInit() {
     this.store.dispatch(new LoadProducts());
