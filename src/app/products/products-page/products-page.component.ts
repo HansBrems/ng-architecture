@@ -5,8 +5,8 @@ import { TranslocoPipe } from '@ngneat/transloco';
 import { Store } from '@ngxs/store';
 import { ButtonModule } from 'primeng/button';
 
-import { LoadProducts } from '../_state/product.actions';
-import { ProductState } from '../_state/product.state';
+import { ProductsPageActions } from '../_data/store-ngxs/product.actions';
+import { ProductState } from '../_data/store-ngxs/product.state';
 import { ProductTableComponent } from './products-table/products-table.component';
 
 @Component({
@@ -25,10 +25,10 @@ export class ProductsPageComponent implements OnInit {
   readonly router = inject(Router);
   readonly store = inject(Store);
 
-  products$ = this.store.select(ProductState.products$);
+  products$ = this.store.select(ProductState.products);
 
   ngOnInit() {
-    this.store.dispatch(new LoadProducts());
+    this.store.dispatch(new ProductsPageActions.LoadProducts());
   }
 
   navigateToEditPage(id: number) {

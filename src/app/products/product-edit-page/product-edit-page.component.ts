@@ -7,8 +7,8 @@ import { map } from 'rxjs';
 
 import { deepClone } from '../../shared/utils/deep-clone';
 import { Product } from '../_data/product';
-import { LoadProduct, UpdateProduct } from '../_state/product.actions';
-import { ProductState } from '../_state/product.state';
+import { ProductEditPageActions } from '../_data/store-ngxs/product.actions';
+import { ProductState } from '../_data/store-ngxs/product.state';
 import { ProductFormComponent } from '../product-form/product-form.component';
 
 @Component({
@@ -22,17 +22,17 @@ export class ProductEditPageComponent implements OnInit {
   readonly store = inject(Store);
 
   productVm$ = this.store
-    .select(ProductState.product$)
+    .select(ProductState.product)
     .pipe(map((product) => deepClone(product)));
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.store.dispatch(new LoadProduct(+id!));
+    this.store.dispatch(new ProductEditPageActions.LoadProduct(+id!));
   }
 
   save(product: Product) {
     this.store
-      .dispatch(new UpdateProduct(product))
+      .dispatch(new ProductEditPageActions.UpdateProduct(product))
       .subscribe(() => this.router.navigate(['/products']));
   }
 }

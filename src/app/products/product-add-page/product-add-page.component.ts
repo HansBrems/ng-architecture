@@ -4,7 +4,7 @@ import { TranslocoPipe } from '@ngneat/transloco';
 import { Store } from '@ngxs/store';
 
 import { Product } from '../_data/product';
-import { InsertProduct } from '../_state/product.actions';
+import { ProductEditPageActions } from '../_data/store-ngxs/product.actions';
 import { ProductFormComponent } from '../product-form/product-form.component';
 
 @Component({
@@ -23,7 +23,7 @@ export class ProductAddPageComponent {
 
   save(product: Product): void {
     this.store
-      .dispatch(new InsertProduct(product))
+      .dispatch(new ProductEditPageActions.InsertProduct(product))
       .subscribe(() => this.router.navigate(['products']));
   }
 }
