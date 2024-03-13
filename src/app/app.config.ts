@@ -12,8 +12,8 @@ import { NGXS_PLUGINS, NgxsModule } from '@ngxs/store';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { routes } from './app.routes';
-import { AppState } from './core/state-ngxs/app.state';
-import { SpinnerPlugin } from './core/state-ngxs/spinner.plugin';
+import { AppState } from './core/store-ngxs/app.state';
+import { SpinnerPlugin } from './core/store-ngxs/spinner.plugin';
 import { AppData } from './data/app-data';
 import { TranslocoHttpLoader } from './transloco-loader';
 
