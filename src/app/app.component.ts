@@ -6,7 +6,7 @@ import { Store } from '@ngxs/store';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { Observable } from 'rxjs';
 
-import { AppState } from './core/state/app.state';
+import { AppState } from './core/state-ngxs/app.state';
 import { ContainerComponent } from './shared/components/layout/container/container.component';
 
 @Component({
