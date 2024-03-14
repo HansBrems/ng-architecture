@@ -15,27 +15,22 @@ export const initialState: ProductsState = {
   newId: 0,
 };
 
-const patchState = (state: ProductsState, patch: Partial<ProductsState>) => ({
-  ...state,
-  ...patch,
-});
-
 export const productReducer = createReducer(
   initialState,
 
-  on(productApiActions.loadProductsSuccess, (state, { products }) =>
-    patchState(state, { products: products, newId: products.length + 1 }),
-  ),
+  on(productApiActions.loadProductsSuccess, (state, action) => ({
+    ...state,
+    products: action.products,
+    newId: action.products.length + 1,
+  })),
 
   on(productEditPageActions.loadProduct, (state) => ({
     ...state,
     product: null,
   })),
 
-  on(productApiActions.loadProductSuccess, (state, { product }) => ({
+  on(productApiActions.loadProductSuccess, (state, action) => ({
     ...state,
-    product,
+    product: action.product,
   })),
-
-  on(productApiActions.updateProductSuccess, (state) => patchState(state, {})),
 );

@@ -39,7 +39,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     importProvidersFrom(
       HttpClientInMemoryWebApiModule.forRoot(AppData, {
-        delay: 2000,
+        delay: 50,
         passThruUnknownUrl: true,
       }),
       // NgxsModule.forRoot([AppState], {
