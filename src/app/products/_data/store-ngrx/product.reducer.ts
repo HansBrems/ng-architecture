@@ -24,13 +24,13 @@ export const productReducer = createReducer(
     newId: action.products.length + 1,
   })),
 
-  on(productEditPageActions.loadProduct, (state) => ({
-    ...state,
-    product: null,
-  })),
+  on(productEditPageActions.loadProduct, (state) => {
+    console.log('load product reducer');
+    return { ...state, product: null };
+  }),
 
-  on(productApiActions.loadProductSuccess, (state, action) => ({
-    ...state,
-    product: action.product,
-  })),
+  on(productApiActions.loadProductSuccess, (state, action) => {
+    console.log('load product success reducer');
+    return { ...state, product: action.product };
+  }),
 );

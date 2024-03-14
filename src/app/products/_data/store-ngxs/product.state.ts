@@ -17,8 +17,6 @@ const DEFAULT_PRODUCT_STATE: ProductStateModel = {
   product: null,
 };
 
-type ProductContext = StateContext<ProductStateModel>;
-
 @Injectable()
 @State<ProductStateModel>({
   name: 'product',
@@ -38,7 +36,7 @@ export class ProductState {
   }
 
   @Action(ProductsPageActions.LoadProducts)
-  loadProducts({ dispatch }: ProductContext) {
+  loadProducts({ dispatch }: StateContext<ProductStateModel>) {
     return this.productService
       .fetchProducts()
       .pipe(
@@ -50,7 +48,7 @@ export class ProductState {
 
   @Action(ProductApiActions.LoadProductsSuccess)
   loadProductsSuccess(
-    { patchState }: ProductContext,
+    { patchState }: StateContext<ProductStateModel>,
     { products }: ProductApiActions.LoadProductsSuccess,
   ) {
     patchState({ products: products });
@@ -58,7 +56,7 @@ export class ProductState {
 
   @Action(ProductEditPageActions.LoadProduct)
   loadProduct(
-    { dispatch }: ProductContext,
+    { dispatch }: StateContext<ProductStateModel>,
     action: ProductEditPageActions.LoadProduct,
   ) {
     return this.productService
@@ -72,20 +70,23 @@ export class ProductState {
 
   @Action(ProductApiActions.LoadProductSuccess)
   loadProductSuccess(
-    { patchState }: ProductContext,
+    { patchState }: StateContext<ProductStateModel>,
     action: ProductApiActions.LoadProductSuccess,
   ) {
     patchState({ product: action.product });
   }
 
   @Action(ProductEditPageActions.InsertProduct)
-  addProduct(_: ProductContext, action: ProductEditPageActions.InsertProduct) {
+  addProduct(
+    _: StateContext<ProductStateModel>,
+    action: ProductEditPageActions.InsertProduct,
+  ) {
     return this.productService.insertProduct(action.product);
   }
 
   @Action(ProductEditPageActions.UpdateProduct)
   updateProduct(
-    _: ProductContext,
+    _: StateContext<ProductStateModel>,
     action: ProductEditPageActions.UpdateProduct,
   ) {
     return this.productService.updateProduct(action.product);

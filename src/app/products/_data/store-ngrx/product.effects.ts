@@ -19,12 +19,13 @@ export class ProductEffects {
   loadProduct$ = createEffect(() =>
     this.actions.pipe(
       ofType(productEditPageActions.loadProduct),
-      exhaustMap((action) =>
-        this.productService.fetchProduct(action.id).pipe(
+      exhaustMap((action) => {
+        console.log('load product effect');
+        return this.productService.fetchProduct(action.id).pipe(
           map((product) => productApiActions.loadProductSuccess({ product })),
           catchError(() => of(productApiActions.loadProductError())),
-        ),
-      ),
+        );
+      }),
     ),
   );
 
