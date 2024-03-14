@@ -51,9 +51,9 @@ export class ProductState {
   @Action(ProductApiActions.LoadProductsSuccess)
   loadProductsSuccess(
     { patchState }: ProductContext,
-    action: ProductApiActions.LoadProductsSuccess,
+    { products }: ProductApiActions.LoadProductsSuccess,
   ) {
-    patchState({ products: action.products });
+    patchState({ products: products });
   }
 
   @Action(ProductEditPageActions.LoadProduct)

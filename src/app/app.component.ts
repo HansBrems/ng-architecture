@@ -1,12 +1,9 @@
 import { AsyncPipe, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { TranslocoPipe } from '@ngneat/transloco';
-import { Store } from '@ngxs/store';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { Observable } from 'rxjs';
 
-import { AppState } from './core/store-ngxs/app.state';
 import { ContainerComponent } from './shared/components/layout/container/container.component';
 
 @Component({
@@ -25,8 +22,7 @@ import { ContainerComponent } from './shared/components/layout/container/contain
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  private readonly store = inject(Store);
-
-  apiCalls$: Observable<number> = this.store.select(AppState.apiCalls);
-  isLoading$ = this.store.select(AppState.isLoading);
+  //private readonly store = inject(Store);
+  // apiCalls$: Observable<number> = this.store.select(AppState.apiCalls);
+  // isLoading$ = this.store.select(AppState.isLoading);
 }

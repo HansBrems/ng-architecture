@@ -2,11 +2,11 @@ import { AsyncPipe } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@ngneat/transloco';
-import { Store } from '@ngxs/store';
+import { Store } from '@ngrx/store';
 import { ButtonModule } from 'primeng/button';
 
-import { ProductsPageActions } from '../_data/store-ngxs/product.actions';
-import { ProductState } from '../_data/store-ngxs/product.state';
+import { productsPageActions } from '../_data/store-ngrx/product.actions';
+import { selectProducts } from '../_data/store-ngrx/product.selectors';
 import { ProductTableComponent } from './products-table/products-table.component';
 
 @Component({
@@ -25,10 +25,10 @@ export class ProductsPageComponent implements OnInit {
   readonly router = inject(Router);
   readonly store = inject(Store);
 
-  products$ = this.store.select(ProductState.products);
+  products$ = this.store.select(selectProducts);
 
   ngOnInit() {
-    this.store.dispatch(new ProductsPageActions.LoadProducts());
+    this.store.dispatch(productsPageActions.loadProducts());
   }
 
   navigateToEditPage(id: number) {

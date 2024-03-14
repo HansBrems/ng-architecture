@@ -7,13 +7,11 @@ import {
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
 import { provideTransloco } from '@ngneat/transloco';
-import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
-import { NGXS_PLUGINS, NgxsModule } from '@ngxs/store';
+import { provideStore } from '@ngrx/store';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { routes } from './app.routes';
-import { AppState } from './core/store-ngxs/app.state';
-import { SpinnerPlugin } from './core/store-ngxs/spinner.plugin';
 import { AppData } from './data/app-data';
 import { TranslocoHttpLoader } from './transloco-loader';
 
@@ -21,6 +19,15 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimationsAsync(),
     provideRouter(routes),
+    provideStore(),
+    provideStoreDevtools({
+      name: 'Products POC',
+      maxAge: 25,
+      logOnly: !isDevMode(),
+      autoPause: true,
+      trace: false,
+      traceLimit: 75,
+    }),
     provideTransloco({
       config: {
         availableLangs: ['en'],
@@ -35,15 +42,15 @@ export const appConfig: ApplicationConfig = {
         delay: 2000,
         passThruUnknownUrl: true,
       }),
-      NgxsModule.forRoot([AppState], {
-        developmentMode: isDevMode(),
-      }),
-      NgxsReduxDevtoolsPluginModule.forRoot(),
+      // NgxsModule.forRoot([AppState], {
+      //   developmentMode: isDevMode(),
+      // }),
+      // NgxsReduxDevtoolsPluginModule.forRoot(),
     ),
-    {
-      provide: NGXS_PLUGINS,
-      useClass: SpinnerPlugin,
-      multi: true,
-    },
+    // {
+    //   provide: NGXS_PLUGINS,
+    //   useClass: SpinnerPlugin,
+    //   multi: true,
+    // },
   ],
 };
