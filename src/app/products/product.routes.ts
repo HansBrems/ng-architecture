@@ -1,11 +1,11 @@
 import { provideEffects } from '@ngrx/effects';
 import { provideState } from '@ngrx/store';
 
-import { ProductEffects } from './_data/store-ngrx/product.effects';
-import { productReducer } from './_data/store-ngrx/product.reducer';
 import { ProductAddPageComponent } from './product-add-page/product-add-page.component';
 import { ProductEditPageComponent } from './product-edit-page/product-edit-page.component';
 import { ProductsPageComponent } from './products-page/products-page.component';
+import { ProductEffects } from './shared/store/product.effects';
+import { productReducer } from './shared/store/product.reducer';
 
 export const ProductRoutes = [
   {
@@ -13,7 +13,6 @@ export const ProductRoutes = [
     providers: [
       provideState({ name: 'products', reducer: productReducer }),
       provideEffects(ProductEffects),
-      //importProvidersFrom(NgxsModule.forFeature([ProductState]))
     ],
     children: [
       {

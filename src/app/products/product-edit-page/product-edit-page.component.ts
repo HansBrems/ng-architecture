@@ -6,10 +6,10 @@ import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 
 import { deepClone } from '../../shared/utils/deep-clone';
-import { Product } from '../_data/product';
-import { productEditPageActions } from '../_data/store-ngrx/product.actions';
-import { selectProduct } from '../_data/store-ngrx/product.selectors';
 import { ProductFormComponent } from '../product-form/product-form.component';
+import { Product } from '../shared/models/product';
+import { productEditPageActions } from '../shared/store/product.actions';
+import { selectProduct } from '../shared/store/product.selectors';
 
 @Component({
   standalone: true,

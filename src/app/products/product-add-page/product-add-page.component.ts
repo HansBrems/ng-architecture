@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { TranslocoPipe } from '@ngneat/transloco';
 import { Store } from '@ngrx/store';
 
-import { Product } from '../_data/product';
-import { productEditPageActions } from '../_data/store-ngrx/product.actions';
 import { ProductFormComponent } from '../product-form/product-form.component';
+import { Product } from '../shared/models/product';
+import { productEditPageActions } from '../shared/store/product.actions';
 
 @Component({
   standalone: true,

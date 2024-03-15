@@ -1,5 +1,12 @@
 import { NgIf } from '@angular/common';
-import { Component, EventEmitter, Input, Output, ViewChild, inject } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+  inject,
+} from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { TranslocoPipe } from '@ngneat/transloco';
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -11,7 +18,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FormFieldComponent } from '../../shared/components/forms/form-field/form-field.component';
 import { InputGroupComponent } from '../../shared/components/forms/input-group/input-group.component';
 import { StackComponent } from '../../shared/components/layout/stack/stack.component';
-import { Product } from '../_data/product';
+import { Product } from '../shared/models/product';
 
 @Component({
   selector: 'app-product-form',

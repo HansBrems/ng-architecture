@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { catchError, exhaustMap, map, of, withLatestFrom } from 'rxjs';
 
-import { ProductService } from '../product.service';
+import { ProductService } from '../services/product.service';
 import {
   productApiActions,
   productEditPageActions,

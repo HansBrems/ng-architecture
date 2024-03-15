@@ -5,8 +5,8 @@ import { TranslocoPipe } from '@ngneat/transloco';
 import { Store } from '@ngrx/store';
 import { ButtonModule } from 'primeng/button';
 
-import { productsPageActions } from '../_data/store-ngrx/product.actions';
-import { selectProducts } from '../_data/store-ngrx/product.selectors';
+import { productsPageActions } from '../shared/store/product.actions';
+import { selectProducts } from '../shared/store/product.selectors';
 import { ProductTableComponent } from './products-table/products-table.component';
 
 @Component({

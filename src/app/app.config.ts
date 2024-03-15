@@ -42,15 +42,6 @@ export const appConfig: ApplicationConfig = {
         delay: 50,
         passThruUnknownUrl: true,
       }),
-      // NgxsModule.forRoot([AppState], {
-      //   developmentMode: isDevMode(),
-      // }),
-      // NgxsReduxDevtoolsPluginModule.forRoot(),
     ),
-    // {
-    //   provide: NGXS_PLUGINS,
-    //   useClass: SpinnerPlugin,
-    //   multi: true,
-    // },
   ],
 };

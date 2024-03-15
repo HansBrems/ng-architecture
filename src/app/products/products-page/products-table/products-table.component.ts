@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TableModule } from 'primeng/table';
 
-import { Product } from '../../_data/product';
+import { Product } from '../../shared/models/product';
 
 @Component({
   selector: 'app-products-table',
