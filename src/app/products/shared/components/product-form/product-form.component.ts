@@ -15,10 +15,10 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 
-import { FormFieldComponent } from '../../shared/components/forms/form-field/form-field.component';
-import { InputGroupComponent } from '../../shared/components/forms/input-group/input-group.component';
-import { StackComponent } from '../../shared/components/layout/stack/stack.component';
-import { Product } from '../shared/models/product';
+import { FormFieldComponent } from '../../../../shared/components/forms/form-field/form-field.component';
+import { InputGroupComponent } from '../../../../shared/components/forms/input-group/input-group.component';
+import { StackComponent } from '../../../../shared/components/layout/stack/stack.component';
+import { Product } from '../../models/product';
 
 @Component({
   selector: 'app-product-form',

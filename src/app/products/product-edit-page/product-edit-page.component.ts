@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 
 import { deepClone } from '../../shared/utils/deep-clone';
-import { ProductFormComponent } from '../product-form/product-form.component';
+import { ProductFormComponent } from '../shared/components/product-form/product-form.component';
 import { Product } from '../shared/models/product';
 import { productEditPageActions } from '../shared/store/product.actions';
 import { selectProduct } from '../shared/store/product.selectors';
