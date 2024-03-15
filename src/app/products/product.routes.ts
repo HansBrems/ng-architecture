@@ -7,7 +7,7 @@ import { ProductsPageComponent } from './products-page/products-page.component';
 import { ProductEffects } from './shared/store/product.effects';
 import { productReducer } from './shared/store/product.reducer';
 
-export const ProductRoutes = [
+export const PRODUCT_ROUTES = [
   {
     path: '',
     providers: [

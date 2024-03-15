@@ -39,7 +39,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     importProvidersFrom(
       HttpClientInMemoryWebApiModule.forRoot(AppData, {
-        delay: 50,
+        delay: 2000,
         passThruUnknownUrl: true,
       }),
     ),

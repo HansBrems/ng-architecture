@@ -9,8 +9,14 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'orders',
+    loadChildren: () =>
+      import('./orders/order.routes').then((m) => m.ORDER_ROUTES),
+  },
+  {
     path: 'products',
-    loadChildren: () => import('./products/product.routes').then((m) => m.ProductRoutes),
+    loadChildren: () =>
+      import('./products/product.routes').then((m) => m.PRODUCT_ROUTES),
   },
   {
     path: '**',

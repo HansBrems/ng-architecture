@@ -4,6 +4,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { TranslocoPipe } from '@ngneat/transloco';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
+import { HeaderComponent } from './core/components/header/header.component';
 import { ContainerComponent } from './shared/components/layout/container/container.component';
 
 @Component({
@@ -16,6 +17,7 @@ import { ContainerComponent } from './shared/components/layout/container/contain
     RouterLink,
     TranslocoPipe,
     ProgressSpinnerModule,
+    HeaderComponent,
     ContainerComponent,
   ],
   templateUrl: './app.component.html',
