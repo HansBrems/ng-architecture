@@ -26,12 +26,10 @@ export class ProductEditPageComponent implements OnInit {
     .pipe(map((product) => deepClone(product)));
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.store.dispatch(productEditPageActions.loadProduct({ id: +id! }));
+    this.store.dispatch(productEditPageActions.loadProduct());
   }
 
   save(product: Product) {
     this.store.dispatch(productEditPageActions.updateProduct({ product }));
-    this.router.navigate(['/products']);
   }
 }

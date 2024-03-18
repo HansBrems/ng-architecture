@@ -12,7 +12,7 @@ export const productsPageActions = createActionGroup({
 export const productEditPageActions = createActionGroup({
   source: 'Product Edit Page',
   events: {
-    'Load Product': props<{ id: number }>(),
+    'Load Product': emptyProps(),
     'Insert Product': props<{ product: Product }>(),
     'Update Product': props<{ product: Product }>(),
   },

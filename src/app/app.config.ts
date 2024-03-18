@@ -7,6 +7,7 @@ import {
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
 import { provideTransloco } from '@ngneat/transloco';
+import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -19,7 +20,8 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimationsAsync(),
     provideRouter(routes),
-    provideStore(),
+    provideStore({ router: routerReducer }),
+    provideRouterStore(),
     provideStoreDevtools({
       name: 'Products POC',
       maxAge: 25,
@@ -39,7 +41,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     importProvidersFrom(
       HttpClientInMemoryWebApiModule.forRoot(AppData, {
-        delay: 2000,
+        delay: 50,
         passThruUnknownUrl: true,
       }),
     ),

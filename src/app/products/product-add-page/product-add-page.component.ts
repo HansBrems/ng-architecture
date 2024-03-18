@@ -23,6 +23,5 @@ export class ProductAddPageComponent {
 
   save(product: Product): void {
     this.store.dispatch(productEditPageActions.insertProduct({ product }));
-    this.router.navigate(['products']);
   }
 }
