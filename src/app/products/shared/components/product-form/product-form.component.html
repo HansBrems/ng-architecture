@@ -1,4 +1,8 @@
-<form #productForm="ngForm" *ngIf="product" (ngSubmit)="submitted.emit(product)">
+<form
+  #productForm="ngForm"
+  *ngIf="product"
+  (ngSubmit)="submitted.emit(product)"
+>
   <div class="grid">
     <div class="col-12">
       <app-form-field>
@@ -39,7 +43,10 @@
 
     <div class="col-12">
       <div class="flex gap-2 justify-content-end">
-        <p-button (click)="confirmCancel($event)" [label]="'cancel' | transloco" />
+        <p-button
+          (click)="confirmCancel($event)"
+          [label]="'cancel' | transloco"
+        />
         <p-button
           [disabled]="productForm.invalid || false"
           type="submit"

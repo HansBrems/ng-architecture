@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 
 import { Product } from '../models/product';
-import { productApiActions, productEditPageActions } from './product.actions';
+import { productApiActions } from './product.actions';
 
 export interface ProductsState {
   products: Product[];
@@ -23,11 +23,6 @@ export const productReducer = createReducer(
     products: action.products,
     newId: action.products.length + 1,
   })),
-
-  on(productEditPageActions.loadProduct, (state) => {
-    console.log('load product reducer');
-    return { ...state, product: null };
-  }),
 
   on(productApiActions.loadProductSuccess, (state, action) => {
     console.log('load product success reducer');
