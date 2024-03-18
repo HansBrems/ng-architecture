@@ -1,5 +1,10 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@ngneat/transloco';
 import { Store } from '@ngrx/store';
@@ -19,6 +24,7 @@ import { ProductTableComponent } from './products-table/products-table.component
     ProductTableComponent,
   ],
   templateUrl: './products-page.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsPageComponent implements OnInit {
   readonly route = inject(ActivatedRoute);

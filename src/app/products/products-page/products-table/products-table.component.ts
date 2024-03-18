@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TableModule } from 'primeng/table';
 
@@ -10,6 +16,7 @@ import { Product } from '../../shared/models/product';
   standalone: true,
   imports: [CommonModule, RouterLink, TableModule],
   templateUrl: './products-table.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductTableComponent {
   @Input() products: Product[] | null = [];

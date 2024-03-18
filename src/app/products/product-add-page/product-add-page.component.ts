@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslocoPipe } from '@ngneat/transloco';
 import { Store } from '@ngrx/store';
@@ -11,6 +11,7 @@ import { productEditPageActions } from '../shared/store/product.actions';
   standalone: true,
   imports: [TranslocoPipe, ProductFormComponent],
   templateUrl: './product-add-page.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductAddPageComponent {
   readonly router = inject(Router);

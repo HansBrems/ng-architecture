@@ -1,5 +1,10 @@
 import { AsyncPipe, NgIf } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -15,6 +20,7 @@ import { selectProduct } from '../shared/store/product.selectors';
   standalone: true,
   imports: [AsyncPipe, NgIf, FormsModule, ProductFormComponent],
   templateUrl: './product-edit-page.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductEditPageComponent implements OnInit {
   readonly route = inject(ActivatedRoute);

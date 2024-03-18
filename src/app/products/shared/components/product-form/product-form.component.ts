@@ -1,5 +1,6 @@
 import { NgIf } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
@@ -39,6 +40,7 @@ import { Product } from '../../models/product';
   ],
   providers: [ConfirmationService, MessageService],
   templateUrl: './product-form.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductFormComponent implements OnChanges {
   private readonly confirmationService = inject(ConfirmationService);
