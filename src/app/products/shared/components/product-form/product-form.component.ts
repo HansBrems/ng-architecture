@@ -3,11 +3,12 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnChanges,
   Output,
-  ViewChild,
+  SimpleChanges,
   inject,
 } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { TranslocoPipe } from '@ngneat/transloco';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
@@ -15,9 +16,10 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 
-import { FormFieldComponent } from '../../../../shared/components/forms/form-field/form-field.component';
-import { InputGroupComponent } from '../../../../shared/components/forms/input-group/input-group.component';
-import { StackComponent } from '../../../../shared/components/layout/stack/stack.component';
+import { FormFieldComponent } from '~/shared/components/forms/form-field/form-field.component';
+import { InputGroupComponent } from '~/shared/components/forms/input-group/input-group.component';
+import { StackComponent } from '~/shared/components/layout/stack/stack.component';
+
 import { Product } from '../../models/product';
 
 @Component({
@@ -25,7 +27,7 @@ import { Product } from '../../models/product';
   standalone: true,
   imports: [
     NgIf,
-    FormsModule,
+    ReactiveFormsModule,
     ButtonModule,
     ConfirmDialogModule,
     InputNumberModule,
@@ -38,16 +40,22 @@ import { Product } from '../../models/product';
   providers: [ConfirmationService, MessageService],
   templateUrl: './product-form.component.html',
 })
-export class ProductFormComponent {
+export class ProductFormComponent implements OnChanges {
   private readonly confirmationService = inject(ConfirmationService);
+  private readonly fb = inject(FormBuilder);
+
+  form = this.fb.group({
+    id: new FormControl(),
+    name: new FormControl(),
+    price: new FormControl(),
+  });
 
   @Input() product: Product | null = null;
   @Output() submitted = new EventEmitter<Product>();
   @Output() cancelled = new EventEmitter<void>();
-  @ViewChild('productForm') productForm: NgForm | null = null;
 
   confirmCancel($event: MouseEvent) {
-    if (this.productForm!.dirty) {
+    if (this.form!.dirty) {
       this.confirmationService.confirm({
         header: 'Confirmation',
         target: $event.target as EventTarget,
@@ -60,5 +68,14 @@ export class ProductFormComponent {
     } else {
       this.cancelled.emit();
     }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const { product } = changes;
+    if (product?.currentValue) this.form.setValue(product.currentValue);
+  }
+
+  save(): void {
+    this.submitted.emit(this.form.getRawValue());
   }
 }

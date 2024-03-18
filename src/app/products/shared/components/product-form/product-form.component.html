@@ -1,22 +1,15 @@
-<form
-  #productForm="ngForm"
-  *ngIf="product"
-  (ngSubmit)="submitted.emit(product)"
->
+<form [formGroup]="form" *ngIf="product" (ngSubmit)="submitted.emit(product)">
   <div class="grid">
     <div class="col-12">
       <app-form-field>
         <label for="name">Name</label>
         <input
-          #name="ngModel"
+          [formControl]="form.controls.name"
           pInputText
           id="name"
-          name="name"
           type="text"
-          [(ngModel)]="product.name"
-          required
         />
-        <em *ngIf="name.invalid">Name is required</em>
+        <em *ngIf="form.controls.name.invalid">Name is required</em>
       </app-form-field>
     </div>
 
@@ -25,19 +18,14 @@
         <label for="price">Price</label>
         <app-input-group>
           <input
-            #price="ngModel"
+            [formControl]="form.controls.price"
             pInputText
             id="price"
-            name="price"
             type="number"
-            [(ngModel)]="product.price"
-            max="2000"
-            min="0"
-            required
           />
           <span class="p-inputgroup-addon">EUR</span>
         </app-input-group>
-        <em *ngIf="price.invalid">Price is invalid</em>
+        <em *ngIf="form.controls.price.invalid">Price is invalid</em>
       </app-form-field>
     </div>
 
@@ -48,7 +36,8 @@
           [label]="'cancel' | transloco"
         />
         <p-button
-          [disabled]="productForm.invalid || false"
+          (click)="save()"
+          [disabled]="form.invalid || false"
           type="submit"
           [label]="'save' | transloco"
         />
