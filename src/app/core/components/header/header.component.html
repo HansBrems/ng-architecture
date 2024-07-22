@@ -1,6 +1,12 @@
-<h1>{{ "app-name" | transloco }}</h1>
+<app-top-bar>
+  <ng-template #startTemplate>
+    <ul class="flex list-none p-0">
+      <li *ngFor="let link of links; let isLast = last">
+        <a class="no-underline" [routerLink]="[link.to]">{{ link.label }}</a>
+        <span *ngIf="!isLast" class="ml-2 mr-2 text-gray-400">·</span>
+      </li>
+    </ul>
+  </ng-template>
 
-<ul>
-  <li><a [routerLink]="['/products']">Products</a></li>
-  <li><a [routerLink]="['/orders']">Orders</a></li>
-</ul>
+  <ng-template #endTemplate>Log In</ng-template>
+</app-top-bar>
