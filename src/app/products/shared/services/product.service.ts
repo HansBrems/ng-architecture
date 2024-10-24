@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { firstValueFrom, tap } from 'rxjs';
 
 import { Product } from '../models/product';
 
@@ -10,19 +10,27 @@ import { Product } from '../models/product';
 export class ProductService {
   readonly http = inject(HttpClient);
 
-  fetchProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>('api/products');
+  newId = 4;
+
+  fetchProducts(): Promise<Product[]> {
+    return firstValueFrom(this.http.get<Product[]>('api/products'));
   }
 
-  fetchProduct(id: number): Observable<Product> {
-    return this.http.get<Product>(`api/products/${id}`);
+  fetchProduct(id: number): Promise<Product> {
+    return firstValueFrom(this.http.get<Product>(`api/products/${id}`));
   }
 
-  insertProduct(product: Product): Observable<void> {
-    return this.http.post<void>('api/products', product);
+  insertProduct(product: Product): Promise<void> {
+    return firstValueFrom(
+      this.http
+        .post<void>('api/products', product)
+        .pipe(tap(() => (this.newId = this.newId + 1))),
+    );
   }
 
-  updateProduct(product: Product): Observable<void> {
-    return this.http.put<void>(`api/products/${product.id}`, product);
+  updateProduct(product: Product): Promise<void> {
+    return firstValueFrom(
+      this.http.put<void>(`api/products/${product.id}`, product),
+    );
   }
 }

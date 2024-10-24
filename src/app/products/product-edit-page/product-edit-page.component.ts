@@ -5,14 +5,13 @@ import {
   OnInit,
   inject,
 } from '@angular/core';
+import { signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
 
 import { ProductFormComponent } from '../shared/components/product-form/product-form.component';
 import { Product } from '../shared/models/product';
-import { productEditPageActions } from '../shared/store/product.actions';
-import { selectProduct } from '../shared/store/product.selectors';
+import { ProductService } from '../shared/services/product.service';
 
 @Component({
   standalone: true,
@@ -23,15 +22,18 @@ import { selectProduct } from '../shared/store/product.selectors';
 export class ProductEditPageComponent implements OnInit {
   readonly route = inject(ActivatedRoute);
   readonly router = inject(Router);
-  readonly store = inject(Store);
+  readonly productService = inject(ProductService);
 
-  productVm$ = this.store.select(selectProduct);
+  product = signal<Product | null>(null);
 
-  ngOnInit(): void {
-    this.store.dispatch(productEditPageActions.loadProduct());
+  async ngOnInit(): Promise<void> {
+    const id = this.route.snapshot.params['id'];
+    const product = await this.productService.fetchProduct(+id);
+    this.product.set(product);
   }
 
-  save(product: Product) {
-    this.store.dispatch(productEditPageActions.updateProduct({ product }));
+  async save(product: Product) {
+    await this.productService.updateProduct(product);
+    await this.router.navigate(['../../'], { relativeTo: this.route });
   }
 }

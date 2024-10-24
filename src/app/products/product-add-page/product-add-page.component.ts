@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslocoPipe } from '@ngneat/transloco';
-import { Store } from '@ngrx/store';
 
 import { ProductFormComponent } from '../shared/components/product-form/product-form.component';
 import { Product } from '../shared/models/product';
-import { productEditPageActions } from '../shared/store/product.actions';
+import { ProductService } from '../shared/services/product.service';
 
 @Component({
   standalone: true,
@@ -14,15 +13,18 @@ import { productEditPageActions } from '../shared/store/product.actions';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductAddPageComponent {
+  readonly route = inject(ActivatedRoute);
   readonly router = inject(Router);
-  private readonly store = inject(Store);
+  readonly productService = inject(ProductService);
 
   product: Product = {
+    id: this.productService.newId,
     name: '',
     price: 0,
   };
 
-  save(product: Product): void {
-    this.store.dispatch(productEditPageActions.insertProduct({ product }));
+  async save(product: Product): Promise<void> {
+    await this.productService.insertProduct(product);
+    await this.router.navigate(['../../'], { relativeTo: this.route });
   }
 }
