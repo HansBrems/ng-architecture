@@ -2,6 +2,7 @@ import { AsyncPipe, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  Input,
   OnInit,
   inject,
 } from '@angular/core';
@@ -26,9 +27,11 @@ export class ProductEditPageComponent implements OnInit {
 
   product = signal<Product | null>(null);
 
+  @Input() productId: string = '';
+
   async ngOnInit(): Promise<void> {
-    const id = this.route.snapshot.params['id'];
-    const product = await this.productService.fetchProduct(+id);
+    if (!this.productId) throw new Error('Invalid route parameters.');
+    const product = await this.productService.fetchProduct(+this.productId);
     this.product.set(product);
   }
 

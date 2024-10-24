@@ -15,7 +15,7 @@ export const PRODUCT_ROUTES = [
         component: ProductAddPageComponent,
       },
       {
-        path: ':id',
+        path: ':productId',
         children: [
           {
             path: 'edit',
