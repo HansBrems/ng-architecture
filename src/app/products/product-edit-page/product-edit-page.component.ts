@@ -5,6 +5,7 @@ import {
   Input,
   OnInit,
   inject,
+  input,
 } from '@angular/core';
 import { signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -26,12 +27,10 @@ export class ProductEditPageComponent implements OnInit {
   readonly productService = inject(ProductService);
 
   product = signal<Product | null>(null);
-
-  @Input() productId: string = '';
+  productId = input.required<string>();
 
   async ngOnInit(): Promise<void> {
-    if (!this.productId) throw new Error('Invalid route parameters.');
-    const product = await this.productService.fetchProduct(+this.productId);
+    const product = await this.productService.fetchProduct(+this.productId());
     this.product.set(product);
   }
 
