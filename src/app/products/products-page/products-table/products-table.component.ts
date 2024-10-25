@@ -2,9 +2,8 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
-  Input,
-  Output,
+  input,
+  output,
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TableModule } from 'primeng/table';
@@ -19,8 +18,8 @@ import { Product } from '../../shared/models/product';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductTableComponent {
-  @Input() products: Product[] | null = [];
-  @Output() linkClicked = new EventEmitter<number>();
+  products = input<Product[]>([]);
+  linkClicked = output<number>();
 
   onLinkClicked($event: MouseEvent, productId: number) {
     this.linkClicked.emit(productId);
