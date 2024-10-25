@@ -2,7 +2,6 @@ import { AsyncPipe, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  Input,
   OnInit,
   inject,
   input,
