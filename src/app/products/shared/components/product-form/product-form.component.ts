@@ -2,12 +2,10 @@ import { NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  Output,
-  SimpleChanges,
+  effect,
   inject,
+  input,
+  output,
 } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { TranslocoPipe } from '@ngneat/transloco';
@@ -42,19 +40,23 @@ import { Product } from '../../models/product';
   templateUrl: './product-form.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductFormComponent implements OnChanges {
+export class ProductFormComponent {
   private readonly confirmationService = inject(ConfirmationService);
   private readonly fb = inject(FormBuilder);
 
   form = this.fb.group({
-    id: new FormControl(),
-    name: new FormControl(),
-    price: new FormControl(),
+    id: new FormControl<number>(0),
+    name: new FormControl<string>(''),
+    price: new FormControl<number>(0),
   });
 
-  @Input() product: Product | null = null;
-  @Output() submitted = new EventEmitter<Product>();
-  @Output() cancelled = new EventEmitter<void>();
+  product = input.required<Product>();
+  submitted = output<Product>();
+  cancelled = output<void>();
+
+  constructor() {
+    effect(() => this.form.setValue(this.product()));
+  }
 
   confirmCancel($event: MouseEvent) {
     if (this.form!.dirty) {
@@ -72,12 +74,12 @@ export class ProductFormComponent implements OnChanges {
     }
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    const { product } = changes;
-    if (product?.currentValue) this.form.setValue(product.currentValue);
-  }
-
   save(): void {
-    this.submitted.emit(this.form.getRawValue());
+    const raw = this.form.getRawValue();
+    this.submitted.emit({
+      id: raw.id || 0,
+      name: raw.name || '',
+      price: raw.price || 0,
+    });
   }
 }

@@ -1,5 +1,7 @@
-<app-product-form
-  [product]="product()"
-  (submitted)="save($event)"
-  (cancelled)="router.navigate(['/products'])"
-/>
+@if (product(); as product) {
+  <app-product-form
+    [product]="product"
+    (submitted)="save($event)"
+    (cancelled)="router.navigate(['/products'])"
+  />
+}
