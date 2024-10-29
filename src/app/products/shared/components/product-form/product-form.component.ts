@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -25,7 +24,6 @@ import { Product } from '../../models/product';
   selector: 'app-product-form',
   standalone: true,
   imports: [
-    NgIf,
     ReactiveFormsModule,
     ButtonModule,
     ConfirmDialogModule,

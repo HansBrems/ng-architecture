@@ -1,10 +1,12 @@
 <app-top-bar>
   <ng-template #startTemplate>
     <ul class="flex list-none p-0">
-      <li *ngFor="let link of links; let isLast = last">
+      @for (link of links; track link.to; let isLast = $last) {
         <a class="no-underline" [routerLink]="[link.to]">{{ link.label }}</a>
-        <span *ngIf="!isLast" class="ml-2 mr-2 text-gray-400">·</span>
-      </li>
+        @if (!isLast) {
+          <span class="ml-2 mr-2 text-gray-400">·</span>
+        }
+      }
     </ul>
   </ng-template>
 

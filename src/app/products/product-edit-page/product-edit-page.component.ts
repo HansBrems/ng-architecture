@@ -1,4 +1,3 @@
-import { AsyncPipe, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -16,7 +15,7 @@ import { ProductService } from '../shared/services/product.service';
 
 @Component({
   standalone: true,
-  imports: [AsyncPipe, NgIf, FormsModule, ProductFormComponent],
+  imports: [FormsModule, ProductFormComponent],
   templateUrl: './product-edit-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

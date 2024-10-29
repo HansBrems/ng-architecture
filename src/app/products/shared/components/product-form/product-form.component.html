@@ -1,49 +1,55 @@
-<form #myForm [formGroup]="form" *ngIf="product()" (ngSubmit)="save()">
-  <div class="grid">
-    <div class="col-12">
-      <app-form-field>
-        <label for="name">Name</label>
-        <input
-          [formControl]="form.controls.name"
-          pInputText
-          id="name"
-          type="text"
-        />
-        <em *ngIf="form.controls.name.invalid">Name is required</em>
-      </app-form-field>
-    </div>
-
-    <div class="col-12">
-      <app-form-field>
-        <label for="price">Price</label>
-        <app-input-group>
+@if (product()) {
+  <form #myForm [formGroup]="form" (ngSubmit)="save()">
+    <div class="grid">
+      <div class="col-12">
+        <app-form-field>
+          <label for="name">Name</label>
           <input
-            [formControl]="form.controls.price"
+            [formControl]="form.controls.name"
             pInputText
-            id="price"
-            name="price"
-            type="number"
+            id="name"
+            type="text"
           />
-          <span class="p-inputgroup-addon">EUR</span>
-        </app-input-group>
-        <em *ngIf="form.controls.price.invalid">Price is invalid</em>
-      </app-form-field>
-    </div>
+          @if (form.controls.name.invalid) {
+            <em>Name is required</em>
+          }
+        </app-form-field>
+      </div>
 
-    <div class="col-12">
-      <div class="flex gap-2 justify-content-end">
-        <p-button
-          (click)="confirmCancel($event)"
-          [label]="'cancel' | transloco"
-        />
-        <p-button
-          [disabled]="form.invalid || false"
-          type="submit"
-          [label]="'save' | transloco"
-        />
+      <div class="col-12">
+        <app-form-field>
+          <label for="price">Price</label>
+          <app-input-group>
+            <input
+              [formControl]="form.controls.price"
+              pInputText
+              id="price"
+              name="price"
+              type="number"
+            />
+            <span class="p-inputgroup-addon">EUR</span>
+          </app-input-group>
+          @if (form.controls.price.invalid) {
+            <em>Price is invalid</em>
+          }
+        </app-form-field>
+      </div>
+
+      <div class="col-12">
+        <div class="flex gap-2 justify-content-end">
+          <p-button
+            (click)="confirmCancel($event)"
+            [label]="'cancel' | transloco"
+          />
+          <p-button
+            [disabled]="form.invalid || false"
+            type="submit"
+            [label]="'save' | transloco"
+          />
+        </div>
       </div>
     </div>
-  </div>
-</form>
+  </form>
+}
 
 <p-confirmDialog></p-confirmDialog>

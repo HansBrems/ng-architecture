@@ -1,4 +1,3 @@
-import { AsyncPipe, NgFor } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -16,14 +15,7 @@ import { ProductTableComponent } from './products-table/products-table.component
 
 @Component({
   standalone: true,
-  imports: [
-    NgFor,
-    AsyncPipe,
-    RouterLink,
-    ButtonModule,
-    TranslocoPipe,
-    ProductTableComponent,
-  ],
+  imports: [RouterLink, ButtonModule, TranslocoPipe, ProductTableComponent],
   templateUrl: './products-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
