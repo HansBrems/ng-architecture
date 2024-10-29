@@ -1,11 +1,17 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, ContentChild, TemplateRef } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ContentChild,
+  TemplateRef,
+} from '@angular/core';
 
 @Component({
   selector: 'app-top-bar',
   standalone: true,
   imports: [NgTemplateOutlet],
   templateUrl: './top-bar.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopBarComponent {
   @ContentChild('startTemplate', { static: false })
