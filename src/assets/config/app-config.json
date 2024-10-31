@@ -1,0 +1,14 @@
+{
+  "header": {
+    "links": [
+      {
+        "label": "Products",
+        "to": "/products"
+      },
+      {
+        "label": "Orders",
+        "to": "/orders"
+      }
+    ]
+  }
+}
