@@ -8,22 +8,23 @@ import {
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@ngneat/transloco';
 
-import { HeaderLink } from '~/core/models/app-configuration';
+import { NavLink } from '~/core/models/nav-link';
 import { ConfigurationService } from '~/core/services/configuration.service';
 
-import { TopBarComponent } from '../top-bar/top-bar.component';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
+import { NavLinkComponent } from '../nav-link/nav-link.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, TranslocoPipe, TopBarComponent],
+  imports: [RouterLink, TranslocoPipe, NavLinkComponent, NavBarComponent],
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnInit {
   private readonly configurationService = inject(ConfigurationService);
 
-  links = signal<HeaderLink[]>([]);
+  links = signal<NavLink[]>([]);
 
   async ngOnInit(): Promise<void> {
     const configuration = await this.configurationService.getConfiguration();

@@ -7,13 +7,13 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-top-bar',
+  selector: 'app-nav-bar',
   standalone: true,
   imports: [NgTemplateOutlet],
-  templateUrl: './top-bar.component.html',
+  templateUrl: './nav-bar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TopBarComponent {
+export class NavBarComponent {
   @ContentChild('startTemplate', { static: false })
   startTemplateRef?: TemplateRef<any>;
 
