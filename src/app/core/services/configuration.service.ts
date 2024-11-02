@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 
-import { AppConfiguration } from '../models/app-configuration';
+import { AppConfiguration } from '../models/configuration/app-configuration';
 
 @Injectable({
   providedIn: 'root',

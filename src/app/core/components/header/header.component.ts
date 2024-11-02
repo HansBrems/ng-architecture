@@ -8,11 +8,10 @@ import {
 import { RouterLink } from '@angular/router';
 import { TranslocoPipe } from '@ngneat/transloco';
 
-import { NavLink } from '~/core/models/nav-link';
+import { NavLink } from '~/core/models/configuration/nav-link';
 import { ConfigurationService } from '~/core/services/configuration.service';
-
-import { NavBarComponent } from '../nav-bar/nav-bar.component';
-import { NavLinkComponent } from '../nav-link/nav-link.component';
+import { NavBarComponent } from '~/shared/components/navigation/nav-bar/nav-bar.component';
+import { NavLinkComponent } from '~/shared/components/navigation/nav-link/nav-link.component';
 
 @Component({
   selector: 'app-header',

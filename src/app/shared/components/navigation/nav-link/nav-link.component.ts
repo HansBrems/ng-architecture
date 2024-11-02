@@ -1,8 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { NavLink } from '~/core/models/nav-link';
-
 @Component({
   selector: 'app-nav-link',
   standalone: true,
@@ -11,5 +9,6 @@ import { NavLink } from '~/core/models/nav-link';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavLinkComponent {
-  link = input.required<NavLink>();
+  label = input.required<string>();
+  to = input.required<string>();
 }
