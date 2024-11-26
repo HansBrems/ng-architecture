@@ -7,7 +7,7 @@ import { ContainerComponent } from './shared/components/layout/container/contain
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, HeaderComponent, ContainerComponent],
+  imports: [RouterOutlet, HeaderComponent, ContainerComponent],
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
