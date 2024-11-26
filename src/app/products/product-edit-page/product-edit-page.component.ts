@@ -4,10 +4,10 @@ import {
   inject,
   input,
 } from '@angular/core';
-import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { derivedAsync } from 'ngxtension/derived-async';
+import { firstValueFrom } from 'rxjs';
 
 import { ProductFormComponent } from '../shared/components/product-form/product-form.component';
 import { Product } from '../shared/models/product';
@@ -26,14 +26,12 @@ export class ProductEditPageComponent {
 
   productId = input.required<string>();
 
-  product = toSignal(
-    toObservable(this.productId).pipe(
-      switchMap((productId) => this.productService.fetchProduct(+productId)),
-    ),
+  product = derivedAsync(() =>
+    this.productService.fetchProduct(+this.productId()),
   );
 
   async save(product: Product) {
-    await this.productService.updateProduct(product);
-    await this.router.navigate(['../../'], { relativeTo: this.route });
+    await firstValueFrom(this.productService.updateProduct(product));
+    this.router.navigate(['../../'], { relativeTo: this.route });
   }
 }
