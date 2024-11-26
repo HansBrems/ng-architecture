@@ -2,7 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   standalone: true,
-  templateUrl: './orders-page.component.html',
+  imports: [],
+  templateUrl: './not-found.page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OrdersPageComponent {}
+export class NotFoundPage {}

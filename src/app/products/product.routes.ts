@@ -1,6 +1,6 @@
-import { ProductAddPageComponent } from './product-add-page/product-add-page.component';
-import { ProductEditPageComponent } from './product-edit-page/product-edit-page.component';
-import { ProductsPageComponent } from './products-page/products-page.component';
+import { AddPage } from './add/add.page';
+import { EditPage } from './edit/edit.page';
+import { ListPage } from './list/list.page';
 
 export const PRODUCT_ROUTES = [
   {
@@ -8,18 +8,18 @@ export const PRODUCT_ROUTES = [
     children: [
       {
         path: '',
-        component: ProductsPageComponent,
+        component: ListPage,
       },
       {
         path: 'add',
-        component: ProductAddPageComponent,
+        component: AddPage,
       },
       {
         path: ':productId',
         children: [
           {
             path: 'edit',
-            component: ProductEditPageComponent,
+            component: EditPage,
           },
         ],
       },

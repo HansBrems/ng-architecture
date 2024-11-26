@@ -2,8 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   standalone: true,
-  imports: [],
-  templateUrl: './page-not-found.component.html',
+  templateUrl: './list.page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PageNotFoundComponent {}
+export class ListPage {}

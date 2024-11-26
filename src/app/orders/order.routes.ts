@@ -1,13 +1,12 @@
-import { OrdersPageComponent } from './orders-page/orders-page.component';
+import { ListPage } from './list/list.page';
 
 export const ORDER_ROUTES = [
   {
     path: '',
-    providers: [],
     children: [
       {
         path: '',
-        component: OrdersPageComponent,
+        component: ListPage,
       },
     ],
   },

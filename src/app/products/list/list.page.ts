@@ -10,10 +10,10 @@ import { ProductTableComponent } from './products-table/products-table.component
 @Component({
   standalone: true,
   imports: [RouterLink, ButtonModule, TranslocoPipe, ProductTableComponent],
-  templateUrl: './products-page.component.html',
+  templateUrl: './list.page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductsPageComponent {
+export class ListPage {
   readonly route = inject(ActivatedRoute);
   readonly router = inject(Router);
   readonly productService = inject(ProductService);

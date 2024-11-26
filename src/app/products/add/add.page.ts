@@ -1,12 +1,5 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  input,
-} from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { derivedAsync } from 'ngxtension/derived-async';
 import { firstValueFrom } from 'rxjs';
 
 import { ProductFormComponent } from '../shared/components/product-form/product-form.component';
@@ -15,23 +8,23 @@ import { ProductService } from '../shared/services/product.service';
 
 @Component({
   standalone: true,
-  imports: [FormsModule, ProductFormComponent],
-  templateUrl: './product-edit-page.component.html',
+  imports: [ProductFormComponent],
+  templateUrl: './add.page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductEditPageComponent {
+export class AddPage {
   readonly route = inject(ActivatedRoute);
   readonly router = inject(Router);
   readonly productService = inject(ProductService);
 
-  productId = input.required<string>();
+  product: Product = {
+    id: this.productService.newId,
+    name: '',
+    price: 0,
+  };
 
-  product = derivedAsync(() =>
-    this.productService.fetchProduct(+this.productId()),
-  );
-
-  async save(product: Product) {
-    await firstValueFrom(this.productService.updateProduct(product));
+  async save(product: Product): Promise<void> {
+    await firstValueFrom(this.productService.insertProduct(product));
     this.router.navigate(['../../'], { relativeTo: this.route });
   }
 }

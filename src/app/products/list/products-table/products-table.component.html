@@ -9,7 +9,7 @@
     </ng-template>
 
     <ng-template pTemplate="body" let-product>
-      <tr class="cursor-pointer" (click)="linkClicked.emit(product.id)">
+      <tr class="cursor-pointer" (click)="rowClicked.emit(product.id)">
         <td>{{ product.id }}</td>
         <td>
           <a>{{ product.name }}</a>

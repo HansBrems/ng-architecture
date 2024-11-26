@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { PageNotFoundComponent } from './not-found/page-not-found.component';
+import { NotFoundPage } from './not-found/not-found.page';
 
 export const routes: Routes = [
   {
@@ -20,6 +20,6 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    component: PageNotFoundComponent,
+    component: NotFoundPage,
   },
 ];
