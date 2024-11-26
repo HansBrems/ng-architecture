@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { firstValueFrom, tap } from 'rxjs';
+import { Observable, firstValueFrom, tap } from 'rxjs';
 
 import { Product } from '../models/product';
 
@@ -16,8 +16,8 @@ export class ProductService {
     return firstValueFrom(this.http.get<Product[]>('api/products'));
   }
 
-  fetchProduct(id: number): Promise<Product> {
-    return firstValueFrom(this.http.get<Product>(`api/products/${id}`));
+  fetchProduct(id: number): Observable<Product> {
+    return this.http.get<Product>(`api/products/${id}`);
   }
 
   insertProduct(product: Product): Promise<void> {
