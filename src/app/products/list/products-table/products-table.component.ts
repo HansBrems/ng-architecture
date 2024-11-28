@@ -16,7 +16,7 @@ import { Product } from '../../shared/models/product';
   templateUrl: './products-table.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductTableComponent {
+export class ProductsTableComponent {
   products = input<Product[]>([]);
   rowClicked = output<number>();
 }

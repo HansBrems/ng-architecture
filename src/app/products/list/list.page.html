@@ -2,10 +2,17 @@
 
 <div class="grid">
   <div class="col-12">
-    <app-products-table
-      [products]="products()"
-      (rowClicked)="navigateToEditPage($event)"
-    />
+    <app-stack>
+      <app-product-filter
+        [filterText]="filter()"
+        (filterApplied)="applyFilter($event)"
+      />
+
+      <app-products-table
+        [products]="products()"
+        (rowClicked)="navigateToEditPage($event)"
+      />
+    </app-stack>
   </div>
 
   <div class="col-12">

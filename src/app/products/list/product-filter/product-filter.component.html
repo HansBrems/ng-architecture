@@ -1,0 +1,4 @@
+<app-stack [horizontal]="true">
+  <input pInputText [(ngModel)]="filterText" />
+  <p-button (click)="filterApplied.emit(filterText())" label="Apply Filter" />
+</app-stack>

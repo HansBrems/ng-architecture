@@ -1,9 +1,13 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { NgClass } from '@angular/common';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   standalone: true,
   selector: 'app-stack',
   templateUrl: './stack.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgClass],
 })
-export class StackComponent {}
+export class StackComponent {
+  horizontal = input<boolean>(false);
+}

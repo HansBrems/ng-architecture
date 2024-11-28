@@ -8,7 +8,7 @@ import { Product } from '../models/product';
   providedIn: 'root',
 })
 export class ProductService {
-  readonly http = inject(HttpClient);
+  private readonly http = inject(HttpClient);
 
   newId = 4;
 
