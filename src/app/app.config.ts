@@ -1,4 +1,4 @@
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import {
   ApplicationConfig,
   importProvidersFrom,
@@ -10,6 +10,7 @@ import { provideTransloco } from '@ngneat/transloco';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { routes } from './app.routes';
+import { httpErrorInterceptor } from './core/interceptors/http-error.interceptor';
 import { AppData } from './data/app-data';
 import { TranslocoHttpLoader } from './transloco-loader';
 
@@ -25,7 +26,7 @@ export const appConfig: ApplicationConfig = {
       },
       loader: TranslocoHttpLoader,
     }),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([httpErrorInterceptor])),
     importProvidersFrom(
       HttpClientInMemoryWebApiModule.forRoot(AppData, {
         delay: 50,
