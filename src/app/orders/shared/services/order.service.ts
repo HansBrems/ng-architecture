@@ -15,9 +15,8 @@ export class OrderService {
   }
 
   getOrder(id: number): Observable<Order | null> {
-    const randomId = Math.floor(Math.random() * 5);
     return this.http
-      .get<Order>(`/api/orders/${randomId}`)
+      .get<Order>(`/api/orders/${id}`)
       .pipe(catchError((err) => of(null)));
   }
 }

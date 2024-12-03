@@ -4,11 +4,12 @@
   <app-stack [horizontal]="true">
     <p-dropdown
       [options]="orders()"
-      [(ngModel)]="selectedOrder"
+      [(ngModel)]="selectedOrderId"
       optionLabel="id"
+      optionValue="id"
     />
 
-    <p-button class="ml-2" (click)="loadOrderDetail()" label="Details" />
+    <p-button class="ml-2" (click)="loadOrderDetails()" label="Details" />
   </app-stack>
 
   <div class="mt-12">{{orderDetails()?.id}}</div>
