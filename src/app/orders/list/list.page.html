@@ -1,16 +1,15 @@
 <h1>Orders</h1>
 
-<app-stack [horizontal]="true">
-  <app-stack [horizontal]="true">
-    <p-dropdown
-      [options]="orders()"
-      [(ngModel)]="selectedOrderId"
-      optionLabel="id"
-      optionValue="id"
-    />
+<div class="flex gap-2 align-items-center">
+  <p-dropdown
+    [options]="ordersState.orders()"
+    [ngModel]="orderDetailsState.selectedOrderId()"
+    (ngModelChange)="orderDetailsState.selectOrder($event)"
+    optionLabel="id"
+    optionValue="id"
+  />
 
-    <p-button class="ml-2" (click)="loadOrderDetails()" label="Details" />
-  </app-stack>
+  <p-button (click)="orderDetailsState.fetch()" label="Details" />
 
-  <div class="mt-12">{{orderDetails()?.id}}</div>
-</app-stack>
+  <div>{{orderDetailsState.orderDetails()?.id}}</div>
+</div>
