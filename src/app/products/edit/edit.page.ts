@@ -5,11 +5,11 @@ import {
   input,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { derivedAsync } from 'ngxtension/derived-async';
 
 import { ProductFormComponent } from '../shared/components/product-form/product-form.component';
 import { Product } from '../shared/models/product';
+import { ProductNavigationService } from '../shared/services/product-navigation.service';
 import { ProductService } from '../shared/services/product.service';
 
 @Component({
@@ -19,8 +19,7 @@ import { ProductService } from '../shared/services/product.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditPage {
-  readonly route = inject(ActivatedRoute);
-  readonly router = inject(Router);
+  readonly navigationService = inject(ProductNavigationService);
   readonly productService = inject(ProductService);
 
   productId = input.required<string>();
@@ -31,6 +30,6 @@ export class EditPage {
 
   async save(product: Product) {
     await this.productService.updateProductAsync(product);
-    this.router.navigate(['../../'], { relativeTo: this.route });
+    this.navigationService.navigateToListPage();
   }
 }

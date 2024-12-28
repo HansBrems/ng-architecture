@@ -30,7 +30,6 @@ import { Product } from '../../models/product';
     InputNumberModule,
     InputTextModule,
     TranslocoPipe,
-    StackComponent,
     FormFieldComponent,
     InputGroupComponent,
   ],

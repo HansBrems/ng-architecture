@@ -1,7 +1,7 @@
 @if (product(); as product) {
-  <app-product-form
-    [product]="product"
-    (submitted)="save($event)"
-    (cancelled)="router.navigate(['/products'])"
-  />
+<app-product-form
+  [product]="product"
+  (submitted)="save($event)"
+  (cancelled)="navigationService.navigateToListPage()"
+/>
 }

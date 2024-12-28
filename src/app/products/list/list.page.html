@@ -10,12 +10,15 @@
 
       <app-products-table
         [products]="products()"
-        (rowClicked)="navigateToEditPage($event)"
+        (rowClicked)="navigationService.navigateToEditPage($event)"
       />
     </app-stack>
   </div>
 
   <div class="col-12">
-    <p-button [label]="'add' | transloco" [routerLink]="['add']" />
+    <p-button
+      [label]="'add' | transloco"
+      (click)="navigationService.navigateToAddPage()"
+    />
   </div>
 </div>

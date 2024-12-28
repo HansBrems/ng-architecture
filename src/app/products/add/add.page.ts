@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 
 import { ProductFormComponent } from '../shared/components/product-form/product-form.component';
 import { Product } from '../shared/models/product';
+import { ProductNavigationService } from '../shared/services/product-navigation.service';
 import { ProductService } from '../shared/services/product.service';
 
 @Component({
@@ -12,8 +12,7 @@ import { ProductService } from '../shared/services/product.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddPage {
-  readonly route = inject(ActivatedRoute);
-  readonly router = inject(Router);
+  readonly navigationService = inject(ProductNavigationService);
   readonly productService = inject(ProductService);
 
   product: Product = {
@@ -24,6 +23,6 @@ export class AddPage {
 
   async save(product: Product): Promise<void> {
     await this.productService.insertProductAsync(product);
-    this.router.navigate(['../../'], { relativeTo: this.route });
+    this.navigationService.navigateToListPage();
   }
 }
