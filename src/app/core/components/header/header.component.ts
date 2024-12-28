@@ -5,8 +5,6 @@ import {
   inject,
   signal,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { TranslocoPipe } from '@ngneat/transloco';
 
 import { NavLink } from '~/core/models/configuration/nav-link';
 import { ConfigurationService } from '~/core/services/configuration.service';
@@ -16,7 +14,7 @@ import { NavLinkComponent } from '~/shared/components/navigation/nav-link/nav-li
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, TranslocoPipe, NavLinkComponent, NavBarComponent],
+  imports: [NavLinkComponent, NavBarComponent],
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

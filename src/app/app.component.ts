@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 
 import { HeaderComponent } from './core/components/header/header.component';
 import { ContainerComponent } from './shared/components/layout/container/container.component';
