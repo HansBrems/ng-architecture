@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { firstValueFrom } from 'rxjs';
 
 import { ProductFormComponent } from '../shared/components/product-form/product-form.component';
 import { Product } from '../shared/models/product';
@@ -24,7 +23,7 @@ export class AddPage {
   };
 
   async save(product: Product): Promise<void> {
-    await firstValueFrom(this.productService.insertProduct(product));
+    await this.productService.insertProductAsync(product);
     this.router.navigate(['../../'], { relativeTo: this.route });
   }
 }

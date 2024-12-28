@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable, firstValueFrom, tap } from 'rxjs';
 
 import { Product } from '../models/product';
 
@@ -26,7 +26,15 @@ export class ProductService {
       .pipe(tap(() => (this.newId = this.newId + 1)));
   }
 
+  insertProductAsync(product: Product): Promise<void> {
+    return firstValueFrom(this.insertProduct(product));
+  }
+
   updateProduct(product: Product): Observable<void> {
     return this.http.put<void>(`api/products/${product.id}`, product);
+  }
+
+  updateProductAsync(product: Product): Promise<void> {
+    return firstValueFrom(this.updateProduct(product));
   }
 }

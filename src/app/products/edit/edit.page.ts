@@ -7,7 +7,6 @@ import {
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { derivedAsync } from 'ngxtension/derived-async';
-import { firstValueFrom } from 'rxjs';
 
 import { ProductFormComponent } from '../shared/components/product-form/product-form.component';
 import { Product } from '../shared/models/product';
@@ -31,7 +30,7 @@ export class EditPage {
   );
 
   async save(product: Product) {
-    await firstValueFrom(this.productService.updateProduct(product));
+    await this.productService.updateProductAsync(product);
     this.router.navigate(['../../'], { relativeTo: this.route });
   }
 }
