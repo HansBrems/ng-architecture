@@ -12,20 +12,21 @@ A small Angular app that I use for learning and experimenting.
   - ✅ Container/Presenter pattern
   - ✅ Standalone components
   - ✅ New syntax for control flow
-  - 🔧 Signals
-  - 🔧 State management using services
-  - 🔧 Reactive forms
-  - 🔧 Error handling (HTTP interceptor)
+  - ✅ Signals
+  - ✅ Template driven forms
+  - ✅ State management using services
+  - ✅ Error handling (HTTP interceptor)
   - ✅ OnPush change detection strategy
   - ✅ Lazy loaded routes
 - I18n
-  - 🔧 Translations: Transloco
+  - ✅ Translations: Transloco
 - Code quality:
   - ✅ Code Formatting: Prettier
   - ✅ Linting: ESLint
 
 ## No longer used
 
+- Reactive forms
 - NGRX
 
 ## Roadmap
