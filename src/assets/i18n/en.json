@@ -1,6 +1,16 @@
 {
-  "app-name": "Product Store",
-  "save": "Save",
-  "cancel": "Cancel",
-  "add": "Add"
+  "appName": "Product Store",
+  "disclaimer": "This is a demo angular application used for learning and experimentation.",
+  "orders": {
+    "title": "Orders"
+  },
+  "products": {
+    "title": "Products"
+  },
+  "shared": {
+    "add": "Add",
+    "applyFilter": "Apply Filter",
+    "cancel": "Cancel",
+    "save": "Save"
+  }
 }

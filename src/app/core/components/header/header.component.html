@@ -2,7 +2,7 @@
   <ng-template #startTemplate>
     <ul class="flex list-none p-0">
       @for (link of links(); track link.to; let isLast = $last) {
-        <app-nav-link [label]="link.label" [to]="link.to" />
+        <app-nav-link [label]="link.label | transloco" [to]="link.to" />
 
         @if (!isLast) {
           <span class="ml-2 mr-2 text-gray-400">·</span>

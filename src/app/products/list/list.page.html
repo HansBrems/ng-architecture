@@ -1,4 +1,4 @@
-<h1>Products</h1>
+<h1>{{ 'products.title' | transloco }}</h1>
 
 <div class="grid">
   <div class="col-12">
@@ -17,7 +17,7 @@
 
   <div class="col-12">
     <p-button
-      [label]="'add' | transloco"
+      [label]="'shared.add' | transloco"
       (click)="navigationService.navigateToAddPage()"
     />
   </div>

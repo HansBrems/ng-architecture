@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { TranslocoModule } from '@ngneat/transloco';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 
@@ -11,7 +12,7 @@ import { OrdersState } from './orders.state';
   templateUrl: './list.page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [OrdersState, OrderDetailsState],
-  imports: [FormsModule, ButtonModule, DropdownModule],
+  imports: [FormsModule, ButtonModule, DropdownModule, TranslocoModule],
 })
 export class ListPage {
   readonly ordersState = inject(OrdersState);

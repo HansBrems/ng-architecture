@@ -1,4 +1,7 @@
 <app-container>
   <app-header />
+
+  <p-messages [closable]="false" [value]="messages()" />
+
   <router-outlet></router-outlet>
 </app-container>

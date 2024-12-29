@@ -5,6 +5,7 @@ import {
   inject,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { TranslocoModule } from '@ngneat/transloco';
 
 import { ConfigurationService } from '~/core/services/configuration.service';
 import { NavBarComponent } from '~/shared/components/navigation/nav-bar/nav-bar.component';
@@ -13,7 +14,7 @@ import { NavLinkComponent } from '~/shared/components/navigation/nav-link/nav-li
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [NavLinkComponent, NavBarComponent],
+  imports: [TranslocoModule, NavLinkComponent, NavBarComponent],
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

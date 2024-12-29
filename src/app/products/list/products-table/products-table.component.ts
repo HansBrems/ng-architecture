@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -12,7 +11,7 @@ import { Product } from '../../shared/models/product';
 @Component({
   selector: 'app-products-table',
   standalone: true,
-  imports: [CommonModule, TableModule],
+  imports: [TableModule],
   templateUrl: './products-table.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
