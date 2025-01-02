@@ -1,8 +1,8 @@
 <div class="flex justify-content-between align-items-center">
   <div>
-    <ng-container [ngTemplateOutlet]="startTemplateRef || null" />
+    <ng-content select="[slot='start']" />
   </div>
   <div>
-    <ng-container [ngTemplateOutlet]="endTemplateRef || null" />
+    <ng-content select="[slot='end']" />
   </div>
 </div>

@@ -1,15 +1,7 @@
 <app-nav-bar>
-  <ng-template #startTemplate>
-    <ul class="flex list-none p-0">
-      @for (link of links(); track link.to; let isLast = $last) {
-        <app-nav-link [label]="link.label | transloco" [to]="link.to" />
+  <div slot="start">
+    <app-header-links [links]="links()" />
+  </div>
 
-        @if (!isLast) {
-          <span class="ml-2 mr-2 text-gray-400">·</span>
-        }
-      }
-    </ul>
-  </ng-template>
-
-  <ng-template #endTemplate>Log In</ng-template>
+  <div slot="end">Log In</div>
 </app-nav-bar>

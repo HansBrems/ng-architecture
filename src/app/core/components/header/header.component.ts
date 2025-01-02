@@ -5,16 +5,17 @@ import {
   inject,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { TranslocoModule } from '@ngneat/transloco';
+import { MenubarModule } from 'primeng/menubar';
 
 import { ConfigurationService } from '~/core/services/configuration.service';
 import { NavBarComponent } from '~/shared/components/navigation/nav-bar/nav-bar.component';
-import { NavLinkComponent } from '~/shared/components/navigation/nav-link/nav-link.component';
+
+import { HeaderLinksComponent } from './header-links/header-links.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [TranslocoModule, NavLinkComponent, NavBarComponent],
+  imports: [HeaderLinksComponent, NavBarComponent, MenubarModule],
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
