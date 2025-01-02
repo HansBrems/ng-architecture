@@ -1,57 +1,62 @@
-<!-- work on forms pls -->
+<form #form="ngForm" (ngSubmit)="save(productVm())">
+  <div class="grid">
+    <div class="col-12">
+      <app-form-field>
+        <label for="name">Name</label>
+        <input
+          #name="ngModel"
+          name="name"
+          pInputText
+          type="text"
+          [(ngModel)]="productVm().name"
+          required
+          minlength="2"
+        />
 
-@if (product()) {
-  <form #myForm [formGroup]="form" (ngSubmit)="save()">
-    <div class="grid">
-      <div class="col-12">
-        <app-form-field>
-          <label for="name">Name</label>
+        @if (name.touched && name.invalid) {
+          <em>Please provide a valid name</em>
+        }
+      </app-form-field>
+    </div>
+
+    <div class="col-12">
+      <app-form-field>
+        <label for="price">Price</label>
+        <app-input-group>
           <input
-            [formControl]="form.controls.name"
+            #price="ngModel"
+            name="price"
             pInputText
-            id="name"
-            type="text"
+            type="number"
+            [(ngModel)]="productVm().price"
+            required
+            [min]="0"
           />
-          @if (form.controls.name.invalid) {
-            <em>Name is required</em>
-          }
-        </app-form-field>
-      </div>
+          <span class="p-inputgroup-addon">EUR</span>
+        </app-input-group>
 
-      <div class="col-12">
-        <app-form-field>
-          <label for="price">Price</label>
-          <app-input-group>
-            <input
-              [formControl]="form.controls.price"
-              pInputText
-              id="price"
-              name="price"
-              type="number"
-            />
-            <span class="p-inputgroup-addon">EUR</span>
-          </app-input-group>
-          @if (form.controls.price.invalid) {
-            <em>Price is invalid</em>
-          }
-        </app-form-field>
-      </div>
+        @if (price.invalid) {
+          <em>Price is invalid</em>
+        }
+      </app-form-field>
+    </div>
 
-      <div class="col-12">
-        <div class="flex gap-2 justify-content-end">
-          <p-button
-            (click)="confirmCancel($event)"
-            [label]="'shared.cancel' | transloco"
-          />
-          <p-button
-            [disabled]="form.invalid || false"
-            type="submit"
-            [label]="'shared.save' | transloco"
-          />
-        </div>
+    <div class="col-12">
+      <div class="flex gap-2 justify-content-end">
+        <p-button
+          severity="secondary"
+          [label]="'shared.cancel' | transloco"
+          (click)="confirmCancel($event)"
+        />
+
+        <p-button
+          type="submit"
+          [disabled]="form.invalid"
+          [label]="'shared.save' | transloco"
+        />
       </div>
     </div>
-  </form>
-}
+  </div>
+</form>
 
 <p-confirmDialog></p-confirmDialog>

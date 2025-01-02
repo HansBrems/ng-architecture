@@ -3,5 +3,13 @@
   "importOrderParserPlugins": ["decorators-legacy", "typescript"],
   "importOrder": ["^~/", "^[./]"],
   "importOrderSeparation": true,
-  "importOrderSortSpecifiers": true
+  "importOrderSortSpecifiers": true,
+  "overrides": [
+    {
+      "files": ["*.html"],
+      "options": {
+        "parser": "angular"
+      }
+    }
+  ]
 }
