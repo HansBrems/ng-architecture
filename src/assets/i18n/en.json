@@ -1,6 +1,6 @@
 {
   "appName": "Product Store",
-  "disclaimer": "This is a demo angular application used for learning and experimentation.",
+  "disclaimer": "This is a demo Angular application used for learning and experimentation.",
   "orders": {
     "title": "Orders"
   },
