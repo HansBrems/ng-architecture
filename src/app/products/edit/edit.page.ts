@@ -4,8 +4,10 @@ import {
   inject,
   input,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { TranslocoPipe } from '@ngneat/transloco';
 import { derivedAsync } from 'ngxtension/derived-async';
+
+import { PageComponent } from '~/shared/components/layout/page/page.component';
 
 import { ProductFormComponent } from '../shared/components/product-form/product-form.component';
 import { Product } from '../shared/models/product';
@@ -13,10 +15,10 @@ import { ProductNavigationService } from '../shared/services/product-navigation.
 import { ProductService } from '../shared/services/product.service';
 
 @Component({
-  standalone: true,
-  imports: [FormsModule, ProductFormComponent],
   templateUrl: './edit.page.html',
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [TranslocoPipe, PageComponent, ProductFormComponent],
 })
 export class EditPage {
   readonly navigationService = inject(ProductNavigationService);

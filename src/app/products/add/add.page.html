@@ -1,5 +1,7 @@
-<app-product-form
-  [product]="product"
-  (submitted)="save($event)"
-  (cancelled)="navigationService.navigateToListPage()"
-/>
+<app-page [title]="'products.add.title' | transloco">
+  <app-product-form
+    [product]="product"
+    (submitted)="save($event)"
+    (cancelled)="navigationService.navigateToListPage()"
+  />
+</app-page>

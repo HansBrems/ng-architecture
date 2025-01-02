@@ -1,7 +1,8 @@
-<app-container>
+<div class="flex flex-column">
   <app-header />
-
-  <p-messages [closable]="false" [value]="messages()" />
-
-  <router-outlet></router-outlet>
-</app-container>
+  <app-container>
+    <!-- Used to show the disclaimer -->
+    <p-messages [closable]="false" [value]="messages()" />
+    <router-outlet />
+  </app-container>
+</div>

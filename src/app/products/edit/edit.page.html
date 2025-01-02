@@ -1,7 +1,9 @@
-@if (product(); as product) {
-  <app-product-form
-    [product]="product"
-    (submitted)="save($event)"
-    (cancelled)="navigationService.navigateToListPage()"
-  />
-}
+<app-page [title]="'products.edit.title' | transloco">
+  @if (product(); as product) {
+    <app-product-form
+      [product]="product"
+      (submitted)="save($event)"
+      (cancelled)="navigationService.navigateToListPage()"
+    />
+  }
+</app-page>

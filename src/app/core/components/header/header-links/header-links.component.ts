@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { TranslocoModule } from '@ngneat/transloco';
+import { TranslocoPipe } from '@ngneat/transloco';
 
 import { NavLink } from '~/core/models/configuration/nav-link';
 import { NavLinkComponent } from '~/shared/components/navigation/nav-link/nav-link.component';
@@ -9,7 +9,7 @@ import { NavLinkComponent } from '~/shared/components/navigation/nav-link/nav-li
   templateUrl: './header-links.component.html',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslocoModule, NavLinkComponent],
+  imports: [TranslocoPipe, NavLinkComponent],
 })
 export class HeaderLinksComponent {
   links = input.required<NavLink[]>();

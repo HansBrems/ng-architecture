@@ -1,4 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { TranslocoPipe } from '@ngneat/transloco';
+
+import { PageComponent } from '~/shared/components/layout/page/page.component';
 
 import { ProductFormComponent } from '../shared/components/product-form/product-form.component';
 import { Product } from '../shared/models/product';
@@ -7,7 +10,7 @@ import { ProductService } from '../shared/services/product.service';
 
 @Component({
   standalone: true,
-  imports: [ProductFormComponent],
+  imports: [TranslocoPipe, PageComponent, ProductFormComponent],
   templateUrl: './add.page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

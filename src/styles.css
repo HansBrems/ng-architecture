@@ -6,3 +6,7 @@
 /* .p-inputtext.ng-touched.ng-valid {
   border-color: #36f445;
 } */
+
+.max-w-screen-lg {
+  max-width: 1280px;
+}

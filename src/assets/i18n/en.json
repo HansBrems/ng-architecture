@@ -2,10 +2,20 @@
   "appName": "Product Store",
   "disclaimer": "This is a demo Angular application used for learning and experimentation.",
   "orders": {
-    "title": "Orders"
+    "list": {
+      "title": "Orders"
+    }
   },
   "products": {
-    "title": "Products"
+    "add": {
+      "title": "Add Product"
+    },
+    "edit": {
+      "title": "Edit Product"
+    },
+    "list": {
+      "title": "Products"
+    }
   },
   "shared": {
     "add": "Add",

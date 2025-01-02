@@ -2,11 +2,11 @@
   "header": {
     "links": [
       {
-        "label": "products.title",
+        "label": "products.list.title",
         "to": "/products"
       },
       {
-        "label": "orders.title",
+        "label": "orders.list.title",
         "to": "/orders"
       }
     ]

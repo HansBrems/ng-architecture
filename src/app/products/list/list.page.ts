@@ -3,6 +3,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { TranslocoPipe } from '@ngneat/transloco';
 import { ButtonModule } from 'primeng/button';
 
+import { PageComponent } from '~/shared/components/layout/page/page.component';
 import { StackComponent } from '~/shared/components/layout/stack/stack.component';
 
 import { ProductNavigationService } from '../shared/services/product-navigation.service';
@@ -16,6 +17,7 @@ import { ProductsTableComponent } from './products-table/products-table.componen
     ButtonModule,
     TranslocoPipe,
     StackComponent,
+    PageComponent,
     ProductFilterComponent,
     ProductsTableComponent,
   ],
