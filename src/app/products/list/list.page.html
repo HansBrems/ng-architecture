@@ -19,6 +19,12 @@
         [label]="'shared.add' | transloco"
         (click)="navigationService.navigateToAddPage()"
       />
+
+      <p-button
+        class="ml-2"
+        label="Test SignalR connection"
+        (click)="testSignalRConnection()"
+      />
     </div>
   </div>
 </app-page>

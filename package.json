@@ -19,6 +19,7 @@
     "@angular/platform-browser": "^18.2.9",
     "@angular/platform-browser-dynamic": "^18.2.9",
     "@angular/router": "^18.2.9",
+    "@microsoft/signalr": "^8.0.7",
     "@ngneat/transloco": "^6.0.4",
     "angular-in-memory-web-api": "^0.18.0",
     "ngxtension": "^4.1.0",

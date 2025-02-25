@@ -24,7 +24,7 @@ A small Angular app that I use for learning and experimenting.
   - ✅ Code Formatting: Prettier
   - ✅ Linting: ESLint
 
-## No longer used
+## No longer used (for now)
 
 - Reactive forms
 - NGRX
